@@ -76,7 +76,7 @@
             </aside>
             
             <aside class="page_number">
-              1/15
+              1/33
             </aside>
           </footer>
         </div>
@@ -111,7 +111,7 @@
             </aside>
             
             <aside class="page_number">
-              2/15
+              2/33
             </aside>
           </footer>
         </div>
@@ -148,7 +148,7 @@
             </aside>
             
             <aside class="page_number">
-              3/15
+              3/33
             </aside>
           </footer>
         </div>
@@ -185,7 +185,7 @@
             </aside>
             
             <aside class="page_number">
-              4/15
+              4/33
             </aside>
           </footer>
         </div>
@@ -232,7 +232,7 @@
             </aside>
             
             <aside class="page_number">
-              5/15
+              5/33
             </aside>
           </footer>
         </div>
@@ -267,7 +267,7 @@
             </aside>
             
             <aside class="page_number">
-              6/15
+              6/33
             </aside>
           </footer>
         </div>
@@ -322,7 +322,7 @@
             </aside>
             
             <aside class="page_number">
-              7/15
+              7/33
             </aside>
           </footer>
         </div>
@@ -378,7 +378,7 @@
             </aside>
             
             <aside class="page_number">
-              8/15
+              8/33
             </aside>
           </footer>
         </div>
@@ -417,7 +417,7 @@ du code existant.</p></section>
             </aside>
             
             <aside class="page_number">
-              9/15
+              9/33
             </aside>
           </footer>
         </div>
@@ -449,7 +449,7 @@ pour étendre ses fonctionnalités.</p>
             </aside>
             
             <aside class="page_number">
-              10/15
+              10/33
             </aside>
           </footer>
         </div>
@@ -497,7 +497,7 @@ Mauvaise solution : réécrire la classe Book</p>
             </aside>
             
             <aside class="page_number">
-              11/15
+              11/33
             </aside>
           </footer>
         </div>
@@ -505,7 +505,77 @@ Mauvaise solution : réécrire la classe Book</p>
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide has_code slide-12">
+        <div class="slide slide-12">
+          <div class="inner">
+            
+            <header><h1>Open-Closed</h1></header>
+            
+            
+            <section><h2>Mauvais example</h2>
+<p>Problème : </p>
+<ul>
+<li>On a changé le fonctionnement de <code>Book</code> (la méthode <code>getTitle()</code> n'existe plus), potentiellement tout le code qui dépend de <code>Book</code>
+  se retrouve cassé.</li>
+<li>Ça demande de refactorer beaucoup de choses dans notre code interne, au sein même de la classe <code>Book</code>, et dans notre autre code applicatif
+  qui utilise Book</li>
+<li>Si notre code était utilisé par un tiers, une mise à jour de sa dépendance va casser son code</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              12/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-13">
+          <div class="inner">
+            
+            <header><h1>Open-Closed</h1></header>
+            
+            
+            <section><p>Point d'attention : l'idée n'est pas de "monkey patch" à tout prix du code existant, pour éviter d'y toucher en voulant respecter le principe.</p>
+<p>Parfois il est indispensable de refactorer un code mal pensé, ou dont l'adaptation n'est vraiment pas possible avec l'évolution du besoin.</p>
+<p>L'enjeu, est d'arriver à concevoir son code dès le départ pour que ce cas de figure n'arrive pas.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              13/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-14">
           <div class="inner">
             
             <header><h1>Open-Closed</h1></header>
@@ -548,7 +618,7 @@ Mauvaise solution : réécrire la classe Book</p>
             </aside>
             
             <aside class="page_number">
-              12/15
+              14/33
             </aside>
           </footer>
         </div>
@@ -556,7 +626,7 @@ Mauvaise solution : réécrire la classe Book</p>
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide has_code slide-13">
+        <div class="slide has_code slide-15">
           <div class="inner">
             
             
@@ -600,7 +670,7 @@ Besoin ultérieur, nous voulons afficher un log à chaque création d'utilisateu
             </aside>
             
             <aside class="page_number">
-              13/15
+              15/33
             </aside>
           </footer>
         </div>
@@ -608,7 +678,7 @@ Besoin ultérieur, nous voulons afficher un log à chaque création d'utilisateu
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide has_code slide-14">
+        <div class="slide has_code slide-16">
           <div class="inner">
             
             
@@ -654,7 +724,7 @@ Besoin ultérieur, nous voulons afficher un log à chaque création d'utilisateu
             </aside>
             
             <aside class="page_number">
-              14/15
+              16/33
             </aside>
           </footer>
         </div>
@@ -662,7 +732,7 @@ Besoin ultérieur, nous voulons afficher un log à chaque création d'utilisateu
       
       <!-- slide source: slides.md -->
       <div class="slide-wrapper">
-        <div class="slide has_code slide-15">
+        <div class="slide has_code slide-17">
           <div class="inner">
             
             <header><h1>Liskov Substitution</h1></header>
@@ -703,7 +773,754 @@ perturber son fonctionnement.</p>
             </aside>
             
             <aside class="page_number">
-              15/15
+              17/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-18">
+          <div class="inner">
+            
+            <header><h1>Liskov Substitution</h1></header>
+            
+            
+            <section><h2>Mauvais example</h2>
+<p>En reprenant notre extension de <code>Book</code> par <code>TranslatedBook</code></p>
+<div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Book</span> <span class="o">{</span>
+<span class="lineno"> 2 </span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">title</span><span class="o">;</span>
+<span class="lineno"> 3 </span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">author</span><span class="o">;</span>
+<span class="lineno"> 4 </span>
+<span class="lineno"> 5 </span>    <span class="n">Book</span><span class="o">(</span><span class="n">String</span> <span class="n">title</span><span class="o">,</span> <span class="n">String</span> <span class="n">author</span><span class="o">)</span> <span class="o">{</span>
+<span class="lineno"> 6 </span>      <span class="k">this</span><span class="o">.</span><span class="na">title</span> <span class="o">=</span> <span class="n">title</span><span class="o">;</span>
+<span class="lineno"> 7 </span>      <span class="k">this</span><span class="o">.</span><span class="na">author</span> <span class="o">=</span> <span class="n">author</span><span class="o">;</span>
+<span class="lineno"> 8 </span>    <span class="o">}</span>
+<span class="lineno"> 9 </span>
+<span class="lineno">10 </span>    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getTitle</span><span class="o">()</span> <span class="o">{</span>
+<span class="lineno">11 </span>      <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">title</span><span class="o">;</span>
+<span class="lineno">12 </span>    <span class="o">}</span>
+<span class="lineno">13 </span><span class="o">}</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              18/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-19">
+          <div class="inner">
+            
+            <header><h1>Liskov Substitution</h1></header>
+            
+            
+            <section><h2>Mauvais example</h2>
+<p>Plus tard, on se rend compte que certains livres de notre catalogue sont des livres traduits, et qu'on veut aussi connaitre le titre original.</p>
+<div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TranslatedBook</span> <span class="kd">extends</span> <span class="n">Book</span> <span class="o">{</span>
+<span class="lineno"> 2 </span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">originalTitle</span><span class="o">;</span>
+<span class="lineno"> 3 </span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">translatedTitle</span><span class="o">;</span>
+<span class="lineno"> 4 </span>
+<span class="lineno"> 5 </span>    <span class="n">constructor</span><span class="o">(</span><span class="n">String</span> <span class="n">originalTitle</span><span class="o">,</span> <span class="n">String</span> <span class="n">translatedTitle</span><span class="o">)</span> <span class="o">{</span>
+<span class="lineno"> 6 </span>      <span class="kd">super</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+<span class="lineno"> 7 </span>      <span class="k">this</span><span class="o">.</span><span class="na">originalTitle</span> <span class="o">=</span> <span class="n">originalTitle</span><span class="o">;</span>
+<span class="lineno"> 8 </span>      <span class="k">this</span><span class="o">.</span><span class="na">translatedTitle</span> <span class="o">=</span> <span class="n">translatedTitle</span><span class="o">;</span>
+<span class="lineno"> 9 </span>    <span class="o">}</span>
+<span class="lineno">10 </span>
+<span class="lineno">11 </span>    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getOriginalTitle</span><span class="o">()</span> <span class="o">{</span>
+<span class="lineno">12 </span>      <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">originalTitle</span><span class="o">;</span>
+<span class="lineno">13 </span>    <span class="o">}</span>
+<span class="lineno">14 </span>
+<span class="lineno">15 </span>    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getTranslatedTitle</span><span class="o">()</span> <span class="o">{</span>
+<span class="lineno">16 </span>      <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">translatedTitle</span><span class="o">;</span>
+<span class="lineno">17 </span>    <span class="o">}</span>
+<span class="lineno">18 </span><span class="o">}</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              19/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-20">
+          <div class="inner">
+            
+            <header><h1>Liskov Substitution</h1></header>
+            
+            
+            <section><h2>Problèmes</h2>
+<p>Dans mon code client si je fais ceci : </p>
+<div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="kd">class</span> <span class="nc">MyBookRenderer</span> <span class="o">{</span>
+<span class="lineno"> 2 </span>
+<span class="lineno"> 3 </span>  <span class="n">BookController</span> <span class="n">bookController</span><span class="o">;</span>
+<span class="lineno"> 4 </span>
+<span class="lineno"> 5 </span>  <span class="n">renderBookTitleUppercase</span><span class="o">()</span> <span class="o">{</span>
+<span class="lineno"> 6 </span>    <span class="n">Book</span> <span class="n">book</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">bookController</span><span class="o">.</span><span class="na">getBook</span><span class="o">(</span><span class="n">bookId</span><span class="o">);</span>
+<span class="lineno"> 7 </span>
+<span class="lineno"> 8 </span>    <span class="cm">/* En application du principe Liskov-Substitution, bookController </span>
+<span class="lineno"> 9 </span><span class="cm">      nous renvoit une instance de TranslatedBook, il en a le droit, </span>
+<span class="lineno">10 </span><span class="cm">      sans que nous soyons au courant */</span>
+<span class="lineno">11 </span>
+<span class="lineno">12 </span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">book</span><span class="o">.</span><span class="na">getTitle</span><span class="o">().</span><span class="na">toUpperCase</span><span class="o">());</span>
+<span class="lineno">13 </span>  <span class="o">}</span>
+<span class="lineno">14 </span><span class="o">}</span>
+</pre></div>
+
+<p>Je vais recevoir une <code>NullPointerException</code>, car <code>book.getTitle()</code> renvoit <code>null</code> si c'est une instance de <code>TranslatedBook</code>.</p>
+<p>Note : Java est fortement typé, donc le compilateur nous assure dans tous les cas que <code>getTitle()</code> existe et renvoit un String (ou null).
+Dans d'autres langages, on pourrait même avoir un cas de figure où <code>getTitle()</code> n'existe même plus. L'application du principe Liskov-Substitution
+est d'autant plus important.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              20/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-21">
+          <div class="inner">
+            
+            <header><h1>Liskov Substitution</h1></header>
+            
+            
+            <section><h2>Bon example</h2>
+<div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TranslatedBook</span> <span class="kd">extends</span> <span class="n">Book</span> <span class="o">{</span>
+<span class="lineno"> 2 </span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">originalTitle</span><span class="o">;</span>
+<span class="lineno"> 3 </span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">translatedTitle</span><span class="o">;</span>
+<span class="lineno"> 4 </span>
+<span class="lineno"> 5 </span>    <span class="n">constructor</span><span class="o">(</span><span class="n">String</span> <span class="n">originalTitle</span><span class="o">,</span> <span class="n">String</span> <span class="n">translatedTitle</span><span class="o">)</span> <span class="o">{</span>
+<span class="lineno"> 6 </span>      <span class="kd">super</span><span class="o">(</span><span class="n">translatedTitle</span><span class="o">);</span>
+<span class="lineno"> 7 </span>      <span class="k">this</span><span class="o">.</span><span class="na">originalTitle</span> <span class="o">=</span> <span class="n">originalTitle</span><span class="o">;</span>
+<span class="lineno"> 8 </span>      <span class="k">this</span><span class="o">.</span><span class="na">translatedTitle</span> <span class="o">=</span> <span class="n">translatedTitle</span><span class="o">;</span>
+<span class="lineno"> 9 </span>    <span class="o">}</span>
+<span class="lineno">10 </span>
+<span class="lineno">11 </span>    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getOriginalTitle</span><span class="o">()</span> <span class="o">{</span>
+<span class="lineno">12 </span>      <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">originalTitle</span><span class="o">;</span>
+<span class="lineno">13 </span>    <span class="o">}</span>
+<span class="lineno">14 </span>
+<span class="lineno">15 </span>    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getTranslatedTitle</span><span class="o">()</span> <span class="o">{</span>
+<span class="lineno">16 </span>      <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">translatedTitle</span><span class="o">;</span>
+<span class="lineno">17 </span>    <span class="o">}</span>
+<span class="lineno">18 </span>
+<span class="lineno">19 </span>    <span class="nd">@Override</span>
+<span class="lineno">20 </span>    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getTitle</span><span class="o">()</span> <span class="o">{</span>
+<span class="lineno">21 </span>      <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">translatedTitle</span><span class="o">;</span>
+<span class="lineno">22 </span>    <span class="o">}</span>
+<span class="lineno">23 </span><span class="o">}</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              21/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-22">
+          <div class="inner">
+            
+            <header><h1>Liskov Substitution</h1></header>
+            
+            
+            <section><p>Note : dans son sens large, le principe veut que le code fonctionne d'une bonne façon, pas seulement qu'il compile et tourne sans exceptions
+(par exemple, mettre <code>title = ""</code> n'est pas satisfaisant dans le mauvais exemple).</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              22/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-23">
+          <div class="inner">
+            
+            <header><h1>Interface Segregation</h1></header>
+            
+            
+            <section><h2>Définition</h2>
+<p>Préférer plusieurs interfaces spécifiques pour chaque client plutôt qu'une seule interface générale</p>
+<h2>Objectifs</h2>
+<p>C'est un principe très spécifique à la POO fortement typée. </p>
+<p>Quand on définie une interface (au sens POO, donc le mot clé Java <code>interface</code>), on oblige le client
+qui veut l'utiliser à implémenter toute l'interface.</p>
+<p>Le but est de ne pas obliger le client à implémenter une grande partie de l'interface dont il ne se sert pas, 
+dans le cas où on lui donne une interface trop générique alors qu'il a un besoin spécifique</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              23/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-24">
+          <div class="inner">
+            
+            <header><h1>Interface Segregation</h1></header>
+            
+            
+            <section><h2>Mauvais example</h2>
+<p>Pour gérer le contenu d'une médiathèque</p>
+<div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="kd">interface</span> <span class="nc">MediaInterface</span> <span class="o">{</span>
+<span class="lineno"> 2 </span>    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getTitle</span><span class="o">();</span>
+<span class="lineno"> 3 </span>    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getAuthor</span><span class="o">();</span>
+<span class="lineno"> 4 </span>
+<span class="lineno"> 5 </span>    <span class="cm">/* applies to audio media, such as CDs */</span>
+<span class="lineno"> 6 </span>    <span class="kd">public</span> <span class="n">Int</span> <span class="nf">getAudioDurationSeconds</span><span class="o">();</span>
+<span class="lineno"> 7 </span>
+<span class="lineno"> 8 </span>    <span class="cm">/* applies to printed media, such as Books */</span>
+<span class="lineno"> 9 </span>    <span class="kd">public</span> <span class="n">Int</span> <span class="nf">getPagesCount</span><span class="o">();</span>
+<span class="lineno">10 </span><span class="o">}</span>
+<span class="lineno">11 </span>
+<span class="lineno">12 </span><span class="kd">class</span> <span class="nc">MediaRenderer</span> <span class="o">{</span>
+<span class="lineno">13 </span>  <span class="kd">public</span> <span class="n">String</span> <span class="nf">renderMediaTitleAndAuthor</span><span class="o">(</span><span class="n">MediaInterface</span> <span class="n">media</span><span class="o">)</span> <span class="o">{</span>
+<span class="lineno">14 </span>    <span class="k">return</span> <span class="n">media</span><span class="o">.</span><span class="na">getTitle</span><span class="o">()</span> <span class="o">+</span> <span class="s">&quot; - &quot;</span> <span class="o">+</span> <span class="n">media</span><span class="o">.</span><span class="na">getAuthor</span><span class="o">();</span>
+<span class="lineno">15 </span>  <span class="o">}</span>
+<span class="lineno">16 </span>
+<span class="lineno">17 </span>  <span class="kd">public</span> <span class="n">String</span> <span class="nf">renderBook</span><span class="o">(</span><span class="n">MediaInterface</span> <span class="n">book</span><span class="o">)</span> <span class="o">{</span>
+<span class="lineno">18 </span>    <span class="k">return</span> <span class="n">media</span><span class="o">.</span><span class="na">getTitle</span><span class="o">()</span> <span class="o">+</span> <span class="s">&quot; - &quot;</span> <span class="o">+</span> <span class="n">media</span><span class="o">.</span><span class="na">getAuthor</span><span class="o">()</span> <span class="o">+</span> <span class="s">&quot; - &quot;</span> <span class="n">media</span><span class="o">.</span><span class="na">getPagesCount</span><span class="o">()</span> <span class="o">+</span> <span class="s">&quot; pages&quot;</span><span class="o">;</span> 
+<span class="lineno">19 </span>  <span class="o">}</span>
+<span class="lineno">20 </span>
+<span class="lineno">21 </span>  <span class="kd">public</span> <span class="n">String</span> <span class="nf">renderCD</span><span class="o">(</span><span class="n">MediaInterface</span> <span class="n">cd</span><span class="o">)</span> <span class="o">{</span>
+<span class="lineno">22 </span>    <span class="k">return</span> <span class="n">media</span><span class="o">.</span><span class="na">getTitle</span><span class="o">()</span> <span class="o">+</span> <span class="s">&quot; - &quot;</span> <span class="o">+</span> <span class="n">media</span><span class="o">.</span><span class="na">getAuthor</span><span class="o">()</span> <span class="o">+</span> <span class="s">&quot; - &quot;</span> <span class="n">media</span><span class="o">.</span><span class="na">getAudioDurationSeconds</span><span class="o">()</span> <span class="o">+</span> <span class="s">&quot; seconds&quot;</span><span class="o">;</span> 
+<span class="lineno">23 </span>  <span class="o">}</span>
+<span class="lineno">24 </span><span class="o">}</span>
+</pre></div>
+
+<p>On ne fournit pas d'implémentation de <code>MediaInterface (chaque client peut avoir ses besoins spécifiques sur la nature des médias, on lui demande donc
+juste de respecter l'interface</code>MediaInterface<code>avec son implémentation, pour pouvoir utiliser le service</code>MediaRenderer`).</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              24/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-25">
+          <div class="inner">
+            
+            <header><h1>Interface Segregation</h1></header>
+            
+            
+            <section><h2>Problèmes</h2>
+<p>Un client qui n'a que des livres, et ne souhaite utiliser que la méthode  <code>renderBook()</code> du service <code>MediaRenderer</code>
+va être obligé de faire l'implémentation suivante.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              25/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-26">
+          <div class="inner">
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="kd">class</span> <span class="nc">Book</span> <span class="kd">implements</span> <span class="n">MediaInterface</span> <span class="o">{</span>
+<span class="lineno"> 2 </span>  <span class="kd">private</span> <span class="n">String</span> <span class="n">title</span> <span class="o">;</span>
+<span class="lineno"> 3 </span>  <span class="kd">private</span> <span class="n">String</span> <span class="n">author</span><span class="o">;</span>
+<span class="lineno"> 4 </span>  <span class="kd">private</span> <span class="kt">int</span> <span class="n">pagesCount</span><span class="o">;</span>
+<span class="lineno"> 5 </span>
+<span class="lineno"> 6 </span>  <span class="n">Book</span><span class="o">(</span><span class="n">String</span> <span class="n">title</span><span class="o">,</span> <span class="n">String</span> <span class="n">author</span><span class="o">,</span> <span class="kt">int</span> <span class="n">pagesCount</span><span class="o">)</span> <span class="o">{</span>
+<span class="lineno"> 7 </span>    <span class="k">this</span><span class="o">.</span><span class="na">title</span> <span class="o">=</span> <span class="n">title</span><span class="o">;</span>
+<span class="lineno"> 8 </span>    <span class="k">this</span><span class="o">.</span><span class="na">author</span> <span class="o">=</span> <span class="n">author</span><span class="o">;</span>
+<span class="lineno"> 9 </span>    <span class="k">this</span><span class="o">.</span><span class="na">pagesCount</span> <span class="o">=</span> <span class="n">pagesCount</span><span class="o">;</span>
+<span class="lineno">10 </span>  <span class="o">}</span>
+<span class="lineno">11 </span>
+<span class="lineno">12 </span>  <span class="kd">public</span> <span class="n">String</span> <span class="nf">getTitle</span><span class="o">()</span> <span class="o">{</span>
+<span class="lineno">13 </span>    <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">title</span><span class="o">;</span>
+<span class="lineno">14 </span>  <span class="o">}</span>
+<span class="lineno">15 </span>
+<span class="lineno">16 </span>  <span class="kd">public</span> <span class="n">String</span> <span class="nf">getAuthor</span><span class="o">()</span> <span class="o">{</span>
+<span class="lineno">17 </span>    <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">author</span><span class="o">;</span>
+<span class="lineno">18 </span>  <span class="o">}</span>
+<span class="lineno">19 </span>
+<span class="lineno">20 </span>  <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getPagesCount</span><span class="o">()</span> <span class="o">{</span>
+<span class="lineno">21 </span>    <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">pagesCount</span><span class="o">;</span>
+<span class="lineno">22 </span>  <span class="o">}</span>
+<span class="lineno">23 </span>
+<span class="lineno">24 </span>  <span class="cm">/* Implementation factice ici, car on n&#39;a en fait pas besoin des fonctionnalités lié aux médias audio */</span>
+<span class="lineno">25 </span>  <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getAudioDurationSeconds</span><span class="o">()</span> <span class="o">{</span>
+<span class="lineno">26 </span>    <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+<span class="lineno">27 </span>  <span class="o">}</span>
+<span class="lineno">28 </span><span class="o">}</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              26/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-27">
+          <div class="inner">
+            
+            <header><h1>Interface Segregation</h1></header>
+            
+            
+            <section><h2>Bon example</h2>
+<div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="kd">interface</span> <span class="nc">MediaInterface</span> <span class="o">{</span>
+<span class="lineno"> 2 </span>    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getTitle</span><span class="o">();</span>
+<span class="lineno"> 3 </span>    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getAuthor</span><span class="o">();</span>
+<span class="lineno"> 4 </span><span class="o">}</span>
+<span class="lineno"> 5 </span>
+<span class="lineno"> 6 </span><span class="kd">interface</span> <span class="nc">PrintedMediaInterface</span> <span class="kd">extends</span> <span class="n">MediaInterface</span> <span class="o">{</span>
+<span class="lineno"> 7 </span>    <span class="cm">/* applies to printed media, such as Books */</span>
+<span class="lineno"> 8 </span>    <span class="kd">public</span> <span class="n">Int</span> <span class="nf">getPagesCount</span><span class="o">();</span>
+<span class="lineno"> 9 </span><span class="o">}</span>
+<span class="lineno">10 </span>
+<span class="lineno">11 </span><span class="kd">interface</span> <span class="nc">AudioMediaInterface</span> <span class="kd">extends</span> <span class="n">MediaInterface</span> <span class="o">{</span>
+<span class="lineno">12 </span>    <span class="cm">/* applies to audio media, such as CDs */</span>
+<span class="lineno">13 </span>    <span class="kd">public</span> <span class="n">Int</span> <span class="nf">getAudioDurationSeconds</span><span class="o">();</span>
+<span class="lineno">14 </span><span class="o">}</span>
+<span class="lineno">15 </span>
+<span class="lineno">16 </span><span class="kd">class</span> <span class="nc">MediaRenderer</span> <span class="o">{</span>
+<span class="lineno">17 </span>  <span class="kd">public</span> <span class="n">String</span> <span class="nf">renderMediaTitleAndAuthor</span><span class="o">(</span><span class="n">MediaInterface</span> <span class="n">media</span><span class="o">)</span> <span class="o">{</span>
+<span class="lineno">18 </span>    <span class="k">return</span> <span class="n">media</span><span class="o">.</span><span class="na">getTitle</span><span class="o">()</span> <span class="o">+</span> <span class="s">&quot; - &quot;</span> <span class="o">+</span> <span class="n">media</span><span class="o">.</span><span class="na">getAuthor</span><span class="o">();</span>
+<span class="lineno">19 </span>  <span class="o">}</span>
+<span class="lineno">20 </span>
+<span class="lineno">21 </span>  <span class="kd">public</span> <span class="n">String</span> <span class="nf">renderBook</span><span class="o">(</span><span class="n">PrintedMediaInterface</span> <span class="n">book</span><span class="o">)</span> <span class="o">{</span>
+<span class="lineno">22 </span>    <span class="k">return</span> <span class="n">media</span><span class="o">.</span><span class="na">getTitle</span><span class="o">()</span> <span class="o">+</span> <span class="s">&quot; - &quot;</span> <span class="o">+</span> <span class="n">media</span><span class="o">.</span><span class="na">getAuthor</span><span class="o">()</span> <span class="o">+</span> <span class="s">&quot; - &quot;</span> <span class="n">media</span><span class="o">.</span><span class="na">getPagesCount</span><span class="o">()</span> <span class="o">+</span> <span class="s">&quot; pages&quot;</span><span class="o">;</span> 
+<span class="lineno">23 </span>  <span class="o">}</span>
+<span class="lineno">24 </span>
+<span class="lineno">25 </span>  <span class="kd">public</span> <span class="n">String</span> <span class="nf">renderCD</span><span class="o">(</span><span class="n">AudioMediaInterface</span> <span class="n">cd</span><span class="o">)</span> <span class="o">{</span>
+<span class="lineno">26 </span>    <span class="k">return</span> <span class="n">media</span><span class="o">.</span><span class="na">getTitle</span><span class="o">()</span> <span class="o">+</span> <span class="s">&quot; - &quot;</span> <span class="o">+</span> <span class="n">media</span><span class="o">.</span><span class="na">getAuthor</span><span class="o">()</span> <span class="o">+</span> <span class="s">&quot; - &quot;</span> <span class="n">media</span><span class="o">.</span><span class="na">getAudioDurationSeconds</span><span class="o">()</span> <span class="o">+</span> <span class="s">&quot; seconds&quot;</span><span class="o">;</span> 
+<span class="lineno">27 </span>  <span class="o">}</span>
+<span class="lineno">28 </span><span class="o">}</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              27/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-28">
+          <div class="inner">
+            
+            <header><h1>Interface Segregation</h1></header>
+            
+            
+            <section><h2>Bon example</h2>
+<p>Le client peut implémenter seulement l'interface <code>PrintedMediaInterface</code> s'il n'a pas besoin des fonctionnalités
+de <code>AudioMediaInterface</code>.</p>
+<p>S'il ne souhaite utiliser que la méthode <code>renderMediaTitleAndAuthor()</code>, il peut même implémenter seulement l'interface 
+<code>MediaInterface</code>.</p>
+<p>S'il souhaite utiliser à la fois les fonctionalité de <code>PrintedMediaInterface</code> et <code>AudioMediaInterface</code> sur un même objet,
+il peut implémenter plusieurs interfaces avec la syntaxe suivante : </p>
+<div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kd">class</span> <span class="nc">MyMediaThatHasBothPagesAndAudio</span> <span class="kd">implements</span> <span class="n">AudioMediaInterface</span><span class="o">,</span> <span class="n">PrintedMediaInterface</span> <span class="o">{</span>
+<span class="lineno">2 </span>  <span class="cm">/* ... */</span>
+<span class="lineno">3 </span><span class="o">}</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              28/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-29">
+          <div class="inner">
+            
+            <header><h1>Dependency Inversion principle</h1></header>
+            
+            
+            <section><h2>Définition</h2>
+<p>Il faut dépendre des abstractions, pas des implémentations.</p>
+<h2>Objectifs</h2>
+<ul>
+<li>Un composant haut niveau (par exemple, un service pour obtenir les livres), ne doit pas dépendre d'un composant bas niveau (par exemple, 
+  une librairie d'accès à une base de données MySQL)</li>
+<li>Les composants haut niveaux doivent dépendre d'interfaces abstraites, qui définissent seulement les besoins exacts du composant haut niveau</li>
+<li>Ainsi on peut fournir au composant n'importe quelle dépendance bas niveau qui remplit ses besoins</li>
+</ul>
+<h2>Note</h2>
+<p>En termes de design pattern, ce principe repose souvent sur le pattern "Dependency Injection"</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              29/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-30">
+          <div class="inner">
+            
+            <header><h1>Dependency Inversion principle</h1></header>
+            
+            
+            <section><h2>Mauvais example</h2>
+<div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kd">class</span> <span class="nc">BookService</span> <span class="o">{</span> 
+<span class="lineno">2 </span>  <span class="kd">private</span> <span class="n">MySQLConnection</span> <span class="n">dbConnection</span><span class="o">;</span>
+<span class="lineno">3 </span>  <span class="cm">/* + constructor */</span>
+<span class="lineno">4 </span>
+<span class="lineno">5 </span>  <span class="kd">public</span> <span class="n">Book</span><span class="o">[]</span> <span class="nf">getBooks</span><span class="o">()</span> <span class="o">{</span>
+<span class="lineno">6 </span>    <span class="n">ResultSet</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">dbConnection</span><span class="o">.</span><span class="na">query</span><span class="o">(</span><span class="s">&quot;SELECT * FROM books&quot;</span><span class="o">);</span>
+<span class="lineno">7 </span>    <span class="cm">/* parse ResultSet and return an array of Book */</span>
+<span class="lineno">8 </span>  <span class="o">}</span>
+<span class="lineno">9 </span><span class="o">}</span>
+</pre></div>
+
+<p>Si on veut changer notre système de base données, passer de MySQL à PostgreSQL, il faut changer la librairie, ne plus utiliser l'objet
+<code>MySQLConnection</code> et à la place avec un objet <code>PostgreSQLConnection</code>. </p>
+<p>Ce changement bas niveau (changement d'un système de base de données), nous oblige à faire du refactor dans des composants haut niveau
+(<code>BookService</code>).</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              30/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-31">
+          <div class="inner">
+            
+            <header><h1>Dependency Inversion principle</h1></header>
+            
+            
+            <section><h2>Bon example</h2>
+<div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="kd">interface</span> <span class="nc">GenericDbConnection</span> <span class="o">{</span>
+<span class="lineno"> 2 </span>  <span class="kd">public</span> <span class="n">ResultSet</span> <span class="nf">query</span><span class="o">(</span><span class="n">String</span> <span class="n">queryString</span><span class="o">);</span> 
+<span class="lineno"> 3 </span><span class="o">}</span>
+<span class="lineno"> 4 </span>
+<span class="lineno"> 5 </span><span class="kd">class</span> <span class="nc">BookService</span> <span class="o">{</span>
+<span class="lineno"> 6 </span>  <span class="kd">private</span> <span class="n">GenericDbConnection</span> <span class="n">dbConnection</span><span class="o">;</span>
+<span class="lineno"> 7 </span>  <span class="cm">/* + constructor() */</span>
+<span class="lineno"> 8 </span>
+<span class="lineno"> 9 </span>  <span class="kd">public</span> <span class="n">Book</span><span class="o">[]</span> <span class="nf">getBooks</span><span class="o">()</span> <span class="o">{</span>
+<span class="lineno">10 </span>    <span class="n">ResultSet</span> <span class="o">=</span> <span class="n">dbConnection</span><span class="o">.</span><span class="na">query</span><span class="o">(</span><span class="s">&quot;SELECT * FROM books&quot;</span><span class="o">);</span>
+<span class="lineno">11 </span>    <span class="cm">/* parse ResultSet and return an array of Book */</span>
+<span class="lineno">12 </span>  <span class="o">}</span>
+<span class="lineno">13 </span><span class="o">}</span>
+<span class="lineno">14 </span>
+<span class="lineno">15 </span>
+<span class="lineno">16 </span><span class="n">main</span><span class="o">()</span> <span class="o">{</span>
+<span class="lineno">17 </span>  <span class="n">BookService</span> <span class="n">service</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BookService</span><span class="o">(</span><span class="k">new</span> <span class="n">PostgreSQLConnection</span><span class="o">());</span>
+<span class="lineno">18 </span>  <span class="n">service</span><span class="o">.</span><span class="na">getBooks</span><span class="o">();</span>
+<span class="lineno">19 </span><span class="o">}</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              31/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-32">
+          <div class="inner">
+            
+            <header><h1>Dependency Inversion principle</h1></header>
+            
+            
+            <section><ul>
+<li>"Dependency injection" : c'est le code applicatif (main) qui fournit l'instance de la dépendance (le <code>new PostgreSQLConnection()</code>).</li>
+<li>Celà permet de donner au service ce qu'on veut, tant que ça remplit le contrat de l'interface <code>GenericDbConnection</code>.</li>
+<li>Très utile pour faire des tests unitaires, on remplace les dépendances par des implémentation "Mock"</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              32/33
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-33">
+          <div class="inner">
+            
+            
+            <section><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="kd">class</span> <span class="nc">DbConnectionMock</span> <span class="kd">implements</span> <span class="n">GenericDbConnection</span> <span class="o">{</span>
+<span class="lineno"> 2 </span>  <span class="kd">private</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">queries</span><span class="o">;</span>
+<span class="lineno"> 3 </span>
+<span class="lineno"> 4 </span>  <span class="n">GenericDbConnection</span><span class="o">()</span> <span class="o">{</span>
+<span class="lineno"> 5 </span>    <span class="k">this</span><span class="o">.</span><span class="na">queries</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>
+<span class="lineno"> 6 </span>
+<span class="lineno"> 7 </span>  <span class="cm">/* The mock stores the queries done in an array */</span>
+<span class="lineno"> 8 </span>  <span class="kd">public</span> <span class="n">ResultSet</span> <span class="nf">query</span><span class="o">(</span><span class="n">String</span> <span class="n">queryString</span><span class="o">)</span> <span class="o">{</span>
+<span class="lineno"> 9 </span>    <span class="k">this</span><span class="o">.</span><span class="na">queries</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">queryString</span><span class="o">);</span>
+<span class="lineno">10 </span>  <span class="o">}</span>
+<span class="lineno">11 </span>
+<span class="lineno">12 </span>  <span class="kd">public</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="nf">getQueries</span><span class="o">()</span> <span class="o">{</span>
+<span class="lineno">13 </span>    <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">queries</span><span class="o">;</span>
+<span class="lineno">14 </span>  <span class="o">}</span>
+<span class="lineno">15 </span><span class="o">}</span>
+<span class="lineno">16 </span>
+<span class="lineno">17 </span><span class="n">main</span><span class="o">()</span> <span class="o">{</span>
+<span class="lineno">18 </span>  <span class="cm">/* Unit testing our BookService */</span>
+<span class="lineno">19 </span>  <span class="n">DbConnectionMock</span> <span class="n">mock</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DbConnectionMock</span><span class="o">();</span>
+<span class="lineno">20 </span>  <span class="n">BookService</span> <span class="n">service</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BookService</span><span class="o">(</span><span class="n">mock</span><span class="o">);</span>
+<span class="lineno">21 </span>  <span class="n">service</span><span class="o">.</span><span class="na">getBooks</span><span class="o">();</span>
+<span class="lineno">22 </span>  <span class="cm">/* Test is successfull if the correct query was made */</span>
+<span class="lineno">23 </span>  <span class="k">if</span> <span class="o">(</span><span class="n">mock</span><span class="o">.</span><span class="na">queries</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">mock</span><span class="o">.</span><span class="na">queries</span><span class="o">.</span><span class="na">size</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">==</span> <span class="s">&quot;SELECT * FROM books&quot;</span><span class="o">)</span>  <span class="o">{</span>
+<span class="lineno">24 </span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Test success&quot;</span><span class="o">);</span>
+<span class="lineno">25 </span>  <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+<span class="lineno">26 </span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Test fail&quot;</span><span class="o">);</span>
+<span class="lineno">27 </span>  <span class="o">}</span>
+<span class="lineno">28 </span><span class="o">}</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              33/33
             </aside>
           </footer>
         </div>
@@ -790,20 +1607,128 @@ perturber son fonctionnement.</p>
       
       
       <tr id="toc-row-13">
-        <th><a href="#slide13">-</a></th>
+        <th><a href="#slide13">Open-Closed</a></th>
         <td><a href="#slide13">13</a></td>
       </tr>
       
       
       <tr id="toc-row-14">
-        <th><a href="#slide14">-</a></th>
+        <th><a href="#slide14">Open-Closed</a></th>
         <td><a href="#slide14">14</a></td>
       </tr>
       
       
       <tr id="toc-row-15">
-        <th><a href="#slide15">Liskov Substitution</a></th>
+        <th><a href="#slide15">-</a></th>
         <td><a href="#slide15">15</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-16">
+        <th><a href="#slide16">-</a></th>
+        <td><a href="#slide16">16</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-17">
+        <th><a href="#slide17">Liskov Substitution</a></th>
+        <td><a href="#slide17">17</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-18">
+        <th><a href="#slide18">Liskov Substitution</a></th>
+        <td><a href="#slide18">18</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-19">
+        <th><a href="#slide19">Liskov Substitution</a></th>
+        <td><a href="#slide19">19</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-20">
+        <th><a href="#slide20">Liskov Substitution</a></th>
+        <td><a href="#slide20">20</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-21">
+        <th><a href="#slide21">Liskov Substitution</a></th>
+        <td><a href="#slide21">21</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-22">
+        <th><a href="#slide22">Liskov Substitution</a></th>
+        <td><a href="#slide22">22</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-23">
+        <th><a href="#slide23">Interface Segregation</a></th>
+        <td><a href="#slide23">23</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-24">
+        <th><a href="#slide24">Interface Segregation</a></th>
+        <td><a href="#slide24">24</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-25">
+        <th><a href="#slide25">Interface Segregation</a></th>
+        <td><a href="#slide25">25</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-26">
+        <th><a href="#slide26">-</a></th>
+        <td><a href="#slide26">26</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-27">
+        <th><a href="#slide27">Interface Segregation</a></th>
+        <td><a href="#slide27">27</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-28">
+        <th><a href="#slide28">Interface Segregation</a></th>
+        <td><a href="#slide28">28</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-29">
+        <th><a href="#slide29">Dependency Inversion principle</a></th>
+        <td><a href="#slide29">29</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-30">
+        <th><a href="#slide30">Dependency Inversion principle</a></th>
+        <td><a href="#slide30">30</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-31">
+        <th><a href="#slide31">Dependency Inversion principle</a></th>
+        <td><a href="#slide31">31</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-32">
+        <th><a href="#slide32">Dependency Inversion principle</a></th>
+        <td><a href="#slide32">32</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-33">
+        <th><a href="#slide33">-</a></th>
+        <td><a href="#slide33">33</a></td>
       </tr>
       
       
