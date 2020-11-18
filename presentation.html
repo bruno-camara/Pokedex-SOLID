@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<!--
+  Copyright 2010 Google Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+  Original slides: Marcin Wichary (mwichary@google.com)
+  Modifications: Ernest Delgado (ernestd@google.com)
+                 Alex Russell (slightlyoff@chromium.org)
+
+  landslide modifications: Adam Zapletal (adamzap@gmail.com)
+                           Nicolas Perriault (nperriault@gmail.com)
+-->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>SOLID</title>
+    <!-- Styles -->
+    
+    <link rel="stylesheet" media="print" href="file:///home/quentin/.local/lib/python2.7/site-packages/landslide/themes/default/css/print.css">
+    <link rel="stylesheet" media="screen, projection" href="file:///home/quentin/.local/lib/python2.7/site-packages/landslide/themes/default/css/screen.css">
+    
+    
+    <!-- /Styles -->
+    <!-- Javascripts -->
+    
+    <script type="text/javascript" src="file:///home/quentin/.local/lib/python2.7/site-packages/landslide/themes/default/js/slides.js"></script>
+    
+    
+    
+    <!-- /Javascripts -->
+</head>
+<body>
+  <div id="blank"></div>
+  <div class="presentation">
+    <div id="current_presenter_notes">
+      <div id="presenter_note"></div>
+    </div>
+    <div class="slides">
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-1">
+          <div class="inner">
+            
+            <header><h1>SOLID</h1></header>
+            
+            
+            <section><ul>
+<li>Principes de design de développement logiciel </li>
+<li>Pour le paradigme Orienté Object</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              1/15
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-2">
+          <div class="inner">
+            
+            <header><h1>S.O.L.I.D</h1></header>
+            
+            
+            <section><ul>
+<li>Acronyme = méthode mnémotechnique</li>
+<li>Pas une véritée absolue en soi (dans le monde réel, dans le cadre de ce cours oui)</li>
+<li>Selon les langages et les paradigmes, on peut retrouver ces principes sous des formes différentes</li>
+<li>Tel que formulé : très adaptés aux langages fortement orientés POO (Java, C++, C#, …)</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              2/15
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-3">
+          <div class="inner">
+            
+            <header><h1>L'acronyme décortiqué</h1></header>
+            
+            
+            <section><ul>
+<li>S : Single-purpose Responsibility</li>
+<li>O : Open-Closed </li>
+<li>L : Liskov Substition *</li>
+<li>I : Interface Segregation</li>
+<li>D : Dependency Inversion</li>
+</ul>
+<p>* On va chercher loin pour maintenir notre acronyme sous forme de jeu de mot, bienvenu dans le monde de l'informatique</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              3/15
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-4">
+          <div class="inner">
+            
+            <header><h1>Single-purpose Responsibility</h1></header>
+            
+            
+            <section><h2>Définition</h2>
+<p>Une classe, une fonction ou une méthode doit avoir une et une seule responsabilité</p>
+<h2>Objectifs</h2>
+<ul>
+<li>Pour pouvoir tester efficacement chaque classe</li>
+<li>Pour réduire le couplage entre les classes</li>
+<li>Pour l'organisation du code, on aboutira naturellement à une meilleure architecture logicielle</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              4/15
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-5">
+          <div class="inner">
+            
+            <header><h1>Single-purpose Responsibility</h1></header>
+            
+            
+            <section><h2>Mauvais example</h2>
+<div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Book</span> <span class="o">{</span>
+<span class="lineno"> 2 </span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+<span class="lineno"> 3 </span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">author</span><span class="o">;</span>
+<span class="lineno"> 4 </span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">text</span><span class="o">;</span>
+<span class="lineno"> 5 </span>
+<span class="lineno"> 6 </span>    <span class="c1">//constructor, getters and setters</span>
+<span class="lineno"> 7 </span>
+<span class="lineno"> 8 </span>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">exportToJSONFile</span><span class="o">(</span><span class="n">String</span> <span class="n">filePath</span><span class="o">){</span>
+<span class="lineno"> 9 </span>        <span class="n">JSONObject</span> <span class="n">outputObject</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JSONObject</span><span class="o">();</span>
+<span class="lineno">10 </span>        <span class="n">outputObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;name&quot;</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+<span class="lineno">11 </span>        <span class="n">outputObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;author&quot;</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">getAuthor</span><span class="o">());</span>
+<span class="lineno">12 </span>        <span class="n">outputObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;text&quot;</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">getText</span><span class="o">());</span>
+<span class="lineno">13 </span>        <span class="n">Files</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">filename</span><span class="o">),</span> <span class="n">sampleObject</span><span class="o">.</span><span class="na">toJSONString</span><span class="o">().</span><span class="na">getBytes</span><span class="o">());</span>
+<span class="lineno">14 </span>    <span class="o">}</span>
+<span class="lineno">15 </span><span class="o">}</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              5/15
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-6">
+          <div class="inner">
+            
+            <header><h1>Single-purpose Responsibility</h1></header>
+            
+            
+            <section><h2>Mauvais example</h2>
+<h2>Problèmes posés par ce code</h2>
+<ul>
+<li>Exporter le contenu du livre dans un fichier JSON : besoin très spécifique, pas générique, faiblement lié à la raison d'être de la classe Book</li>
+<li>Couplage de la classe Book avec les appels systèmes pour écrire des fichiers (<code>Files</code>, <code>Paths</code>), et la librairie JSON qui nous fournit <code>JONObject</code></li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              6/15
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-7">
+          <div class="inner">
+            
+            <header><h1>Single-purpose Responsibility</h1></header>
+            
+            
+            <section><h2>Bon example</h2>
+<div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Book</span> <span class="o">{</span>
+<span class="lineno"> 2 </span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+<span class="lineno"> 3 </span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">author</span><span class="o">;</span>
+<span class="lineno"> 4 </span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">text</span><span class="o">;</span>
+<span class="lineno"> 5 </span>
+<span class="lineno"> 6 </span>    <span class="c1">//constructor, getters and setters</span>
+<span class="lineno"> 7 </span><span class="o">}</span>
+<span class="lineno"> 8 </span>
+<span class="lineno"> 9 </span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BookJSONExporter</span> <span class="o">{</span>
+<span class="lineno">10 </span>    <span class="kd">private</span> <span class="n">Book</span> <span class="n">book</span><span class="o">;</span>
+<span class="lineno">11 </span>
+<span class="lineno">12 </span>    <span class="kd">public</span> <span class="nf">BookJSONExporter</span><span class="o">(</span><span class="n">Book</span> <span class="n">book</span><span class="o">)</span> <span class="o">{</span>
+<span class="lineno">13 </span>      <span class="k">this</span><span class="o">.</span><span class="na">book</span> <span class="o">=</span> <span class="n">book</span><span class="o">;</span>
+<span class="lineno">14 </span>    <span class="o">}</span>
+<span class="lineno">15 </span>
+<span class="lineno">16 </span>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">exportToFile</span><span class="o">(</span><span class="n">String</span> <span class="n">filePath</span><span class="o">){</span>
+<span class="lineno">17 </span>        <span class="n">JSONObject</span> <span class="n">outputObject</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JSONObject</span><span class="o">();</span>
+<span class="lineno">18 </span>        <span class="n">outputObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;name&quot;</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">book</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+<span class="lineno">19 </span>        <span class="n">outputObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;author&quot;</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">book</span><span class="o">.</span><span class="na">getAuthor</span><span class="o">());</span>
+<span class="lineno">20 </span>        <span class="n">outputObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;text&quot;</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">book</span><span class="o">.</span><span class="na">getText</span><span class="o">());</span>
+<span class="lineno">21 </span>        <span class="n">Files</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">filename</span><span class="o">),</span> <span class="n">sampleObject</span><span class="o">.</span><span class="na">toJSONString</span><span class="o">().</span><span class="na">getBytes</span><span class="o">());</span>
+<span class="lineno">22 </span>    <span class="o">}</span>
+<span class="lineno">23 </span><span class="o">}</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              7/15
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-8">
+          <div class="inner">
+            
+            <header><h1>Single-purpose Responsibility</h1></header>
+            
+            
+            <section><h2>Un autre example, le modèle MVC</h2>
+<p>Model, View, Controller</p>
+<div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Book</span> <span class="o">{</span>
+<span class="lineno"> 2 </span>  <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+<span class="lineno"> 3 </span>  <span class="kd">private</span> <span class="n">String</span> <span class="n">author</span><span class="o">;</span>
+<span class="lineno"> 4 </span>  <span class="kd">private</span> <span class="n">String</span> <span class="n">description</span><span class="o">;</span>
+<span class="lineno"> 5 </span>  <span class="c1">// + getters</span>
+<span class="lineno"> 6 </span><span class="o">}</span>
+<span class="lineno"> 7 </span>
+<span class="lineno"> 8 </span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BookController</span> <span class="o">{</span>
+<span class="lineno"> 9 </span>  <span class="kd">public</span> <span class="n">Book</span> <span class="nf">getBook</span><span class="o">(</span><span class="kt">int</span> <span class="n">bookId</span><span class="o">)</span> <span class="o">{</span>
+<span class="lineno">10 </span>    <span class="c1">// Get book from database</span>
+<span class="lineno">11 </span>  <span class="o">}</span>
+<span class="lineno">12 </span>
+<span class="lineno">13 </span>  <span class="kd">public</span> <span class="n">Book</span><span class="o">[]</span> <span class="nf">getBooks</span><span class="o">()</span> <span class="o">{</span>
+<span class="lineno">14 </span>    <span class="c1">// Get all books from database</span>
+<span class="lineno">15 </span>  <span class="o">}</span>
+<span class="lineno">16 </span><span class="o">}</span>
+<span class="lineno">17 </span>
+<span class="lineno">18 </span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BookView</span> <span class="o">{</span>
+<span class="lineno">19 </span>  <span class="kd">public</span> <span class="n">HTMLObject</span> <span class="nf">generateView</span><span class="o">(</span><span class="n">Book</span> <span class="n">book</span><span class="o">)</span> <span class="o">{</span>
+<span class="lineno">20 </span>    <span class="c1">// Generate HTML visualization of the book object, </span>
+<span class="lineno">21 </span>    <span class="c1">// most of the time using a HTML template library</span>
+<span class="lineno">22 </span>  <span class="o">}</span>
+<span class="lineno">23 </span><span class="o">}</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              8/15
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-9">
+          <div class="inner">
+            
+            <header><h1>Open-Closed</h1></header>
+            
+            
+            <section><h2>Définition</h2>
+<p>Une entité applicative (class, fonction, module ...) doit être ouverte à l'extension, mais fermée à la modification</p>
+<h2>Objectifs</h2>
+<ul>
+<li>Prévoir une évolution future des besoins (évolution des besoins de notre propre code)</li>
+<li>Laisser de la flexibilité à l'utilisation de notre code par un tiers (important pour les librairies notamment)</li>
+</ul>
+<h2>Idée clé</h2>
+<p>Une évolution des fonctionnalités ne doit pas nécessiter de réécrire du code existant, seulement de rajouter du code autour 
+du code existant.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              9/15
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide slide-10">
+          <div class="inner">
+            
+            <header><h1>Open-Closed</h1></header>
+            
+            
+            <section><p>Dans le cadre d'un langage fortement OO comme Java, cela prend la plupart du temps la forme de l'héritage d'une classe existante
+pour étendre ses fonctionnalités.</p>
+<p>Attention toutefois à comprendre qu'il s'agit d'un principe, au delà d'un pattern.</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              10/15
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-11">
+          <div class="inner">
+            
+            <header><h1>Open-Closed</h1></header>
+            
+            
+            <section><h2>Mauvais example</h2>
+<p>Code initial</p>
+<div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Book</span> <span class="o">{</span>
+<span class="lineno">2 </span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">title</span><span class="o">;</span>
+<span class="lineno">3 </span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">author</span><span class="o">;</span>
+<span class="lineno">4 </span>
+<span class="lineno">5 </span>    <span class="c1">//constructor, getters and setters</span>
+<span class="lineno">6 </span><span class="o">}</span>
+</pre></div>
+
+<p>Plus tard, on se rend compte que certains livres de notre catalogue sont des livres traduits, et qu'on veut aussi connaitre le titre original.
+Mauvaise solution : réécrire la classe Book</p>
+<div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Book</span> <span class="o">{</span>
+<span class="lineno">2 </span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">originalTitle</span><span class="o">;</span>
+<span class="lineno">3 </span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">translatedTitle</span><span class="o">;</span>
+<span class="lineno">4 </span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">author</span><span class="o">;</span>
+<span class="lineno">5 </span><span class="o">}</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              11/15
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-12">
+          <div class="inner">
+            
+            <header><h1>Open-Closed</h1></header>
+            
+            
+            <section><h2>Bon example</h2>
+<p>Code initial</p>
+<div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Book</span> <span class="o">{</span>
+<span class="lineno">2 </span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">title</span><span class="o">;</span>
+<span class="lineno">3 </span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">author</span><span class="o">;</span>
+<span class="lineno">4 </span>
+<span class="lineno">5 </span>    <span class="c1">//constructor, getters and setters</span>
+<span class="lineno">6 </span><span class="o">}</span>
+</pre></div>
+
+<p>Plus tard, on se rend compte que certains livres de notre catalogue sont des livres traduits, et qu'on veut aussi connaitre le titre original.</p>
+<div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TranslatedBook</span> <span class="kd">extends</span> <span class="n">Book</span> <span class="o">{</span>
+<span class="lineno">2 </span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">originalTitle</span><span class="o">;</span>
+<span class="lineno">3 </span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">translatedTitle</span><span class="o">;</span>
+<span class="lineno">4 </span>
+<span class="lineno">5 </span>    <span class="nd">@Override</span>
+<span class="lineno">6 </span>    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getTitle</span><span class="o">()</span> <span class="o">{</span>
+<span class="lineno">7 </span>      <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">translatedTitle</span><span class="o">;</span>
+<span class="lineno">8 </span>    <span class="o">}</span>
+<span class="lineno">9 </span><span class="o">}</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              12/15
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-13">
+          <div class="inner">
+            
+            
+            <section><p>Illustration à l'aide de deux examples. Problème : un service permet de créer un livre (enregistrement en base de données). 
+Besoin ultérieur, nous voulons afficher un log à chaque création d'utilisateur, sans réécrire le code existant.</p>
+<p>Version typique OO (code Java) : </p>
+<div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="cm">/* code initial */</span>
+<span class="lineno"> 2 </span><span class="kd">class</span> <span class="nc">UserController</span> <span class="o">{</span>
+<span class="lineno"> 3 </span>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">createUser</span><span class="o">(</span><span class="n">User</span> <span class="n">user</span><span class="o">)</span> <span class="o">{</span>
+<span class="lineno"> 4 </span>    <span class="c1">// make database record</span>
+<span class="lineno"> 5 </span>    <span class="n">Database</span><span class="o">.</span><span class="na">createRecord</span><span class="o">(</span><span class="n">user</span><span class="o">)</span>
+<span class="lineno"> 6 </span>  <span class="o">}</span> 
+<span class="lineno"> 7 </span><span class="o">}</span>
+<span class="lineno"> 8 </span>
+<span class="lineno"> 9 </span><span class="cm">/* nouveau code pour étendre la fonctionnalité avec du logging */</span>
+<span class="lineno">10 </span><span class="kd">class</span> <span class="nc">UserControllerWithLogging</span> <span class="kd">extends</span> <span class="n">UserController</span> <span class="o">{</span>
+<span class="lineno">11 </span>  <span class="nd">@Override</span>
+<span class="lineno">12 </span>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">createUser</span><span class="o">(</span><span class="n">User</span> <span class="n">user</span><span class="o">)</span> <span class="o">{</span>
+<span class="lineno">13 </span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;User created &quot;</span> <span class="o">+</span> <span class="n">user</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+<span class="lineno">14 </span>    <span class="kd">super</span><span class="o">.</span><span class="na">createUser</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+<span class="lineno">15 </span>  <span class="o">}</span>
+<span class="lineno">16 </span><span class="o">}</span>
+<span class="lineno">17 </span>
+<span class="lineno">18 </span><span class="cm">/* mon code client */</span>
+<span class="lineno">19 </span><span class="n">UserController</span> <span class="n">controller</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UserControllerWithLogging</span><span class="o">();</span>
+<span class="lineno">20 </span><span class="n">controller</span><span class="o">.</span><span class="na">createUser</span><span class="o">(</span><span class="n">myUser</span><span class="o">);</span> <span class="cm">/* Le logging a bien lieu */</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              13/15
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-14">
+          <div class="inner">
+            
+            
+            <section><p>Une version possible en javascript (programmation fonctionnelle + observer pattern)</p>
+<div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="cm">/* code initial, prévu avec un &quot;hook&quot; onCreate */</span>
+<span class="lineno"> 2 </span><span class="nx">usersController</span> <span class="o">=</span> <span class="p">{</span>
+<span class="lineno"> 3 </span>  <span class="nx">onCreateCallbacks</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="lineno"> 4 </span>
+<span class="lineno"> 5 </span>  <span class="nx">onCreate</span><span class="p">(</span><span class="nx">callbackFunction</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 6 </span>    <span class="k">this</span><span class="p">.</span><span class="nx">onCreateCallbacks</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">callbackFunction</span><span class="p">);</span>
+<span class="lineno"> 7 </span>  <span class="p">}</span>
+<span class="lineno"> 8 </span>
+<span class="lineno"> 9 </span>  <span class="nx">createUser</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">10 </span>    <span class="nx">Database</span><span class="p">.</span><span class="nx">createRecord</span><span class="p">(</span><span class="nx">user</span><span class="p">);</span>
+<span class="lineno">11 </span>    <span class="nx">onCreateCallbacks</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">callbackFunction</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">12 </span>      <span class="nx">callbackFunction</span><span class="p">(</span><span class="nx">user</span><span class="p">);</span>
+<span class="lineno">13 </span>    <span class="p">})</span>
+<span class="lineno">14 </span>  <span class="p">}</span>
+<span class="lineno">15 </span><span class="p">}</span>
+<span class="lineno">16 </span>
+<span class="lineno">17 </span>
+<span class="lineno">18 </span><span class="cm">/* Nouveau code pour étendre la fonctionnalité avec du logging */</span>
+<span class="lineno">19 </span><span class="nx">usersController</span><span class="p">.</span><span class="nx">onCreate</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">20 </span>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;User created &#39;</span> <span class="o">+</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">user</span><span class="p">));</span>
+<span class="lineno">21 </span><span class="p">})</span>
+<span class="lineno">22 </span>
+<span class="lineno">23 </span><span class="cm">/* Mon code qui veut faire du logging*/</span>
+<span class="lineno">24 </span><span class="nx">usersController</span><span class="p">.</span><span class="nx">createUser</span><span class="p">(</span><span class="nx">myUser</span><span class="p">);</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              14/15
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code slide-15">
+          <div class="inner">
+            
+            <header><h1>Liskov Substitution</h1></header>
+            
+            
+            <section><p>Si le code manipule un objet de type A, et que B est un sous type de A, on doit pouvoir donner au programme un objet de type B sans 
+perturber son fonctionnement.</p>
+<p>Dans le cadre de la POO, c'est très simple : </p>
+<div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="kd">class</span> <span class="nc">A</span> <span class="o">{</span>
+<span class="lineno"> 2 </span>  <span class="cm">/* lot of methods yeah */</span>
+<span class="lineno"> 3 </span><span class="o">}</span>
+<span class="lineno"> 4 </span>
+<span class="lineno"> 5 </span><span class="kd">class</span> <span class="nc">B</span> <span class="kd">extends</span> <span class="n">A</span> <span class="o">{</span>
+<span class="lineno"> 6 </span>  <span class="cm">/* can override A methods, or leave them as is */</span>
+<span class="lineno"> 7 </span>
+<span class="lineno"> 8 </span>  <span class="cm">/* additionnal methods */</span>
+<span class="lineno"> 9 </span><span class="o">}</span>
+<span class="lineno">10 </span>
+<span class="lineno">11 </span><span class="n">myProgram</span><span class="o">()</span> <span class="o">{</span>
+<span class="lineno">12 </span>  <span class="n">A</span> <span class="n">myObject</span> <span class="o">=</span> <span class="k">new</span> <span class="n">B</span><span class="o">();</span> <span class="cm">/* Doit pouvoir marcher sans problème */</span>
+<span class="lineno">13 </span>
+<span class="lineno">14 </span>  <span class="cm">/* happily manipulate myObject as an A, because that what we expected, even though it&#39;s a B */</span>
+<span class="lineno">15 </span><span class="o">}</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              15/15
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  <div id="toc" class="sidebar hidden">
+    <h2>Table of Contents</h2>
+    <table>
+      <caption>Table of Contents</caption>
+      
+      <tr id="toc-row-1">
+        <th><a href="#slide1">SOLID</a></th>
+        <td><a href="#slide1">1</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-2">
+        <th><a href="#slide2">S.O.L.I.D</a></th>
+        <td><a href="#slide2">2</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-3">
+        <th><a href="#slide3">L'acronyme décortiqué</a></th>
+        <td><a href="#slide3">3</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-4">
+        <th><a href="#slide4">Single-purpose Responsibility</a></th>
+        <td><a href="#slide4">4</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-5">
+        <th><a href="#slide5">Single-purpose Responsibility</a></th>
+        <td><a href="#slide5">5</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-6">
+        <th><a href="#slide6">Single-purpose Responsibility</a></th>
+        <td><a href="#slide6">6</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-7">
+        <th><a href="#slide7">Single-purpose Responsibility</a></th>
+        <td><a href="#slide7">7</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-8">
+        <th><a href="#slide8">Single-purpose Responsibility</a></th>
+        <td><a href="#slide8">8</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-9">
+        <th><a href="#slide9">Open-Closed</a></th>
+        <td><a href="#slide9">9</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-10">
+        <th><a href="#slide10">Open-Closed</a></th>
+        <td><a href="#slide10">10</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-11">
+        <th><a href="#slide11">Open-Closed</a></th>
+        <td><a href="#slide11">11</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-12">
+        <th><a href="#slide12">Open-Closed</a></th>
+        <td><a href="#slide12">12</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-13">
+        <th><a href="#slide13">-</a></th>
+        <td><a href="#slide13">13</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-14">
+        <th><a href="#slide14">-</a></th>
+        <td><a href="#slide14">14</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-15">
+        <th><a href="#slide15">Liskov Substitution</a></th>
+        <td><a href="#slide15">15</a></td>
+      </tr>
+      
+      
+    </table>
+  </div>
+  
+  <div id="help" class="sidebar hidden">
+    <h2>Help</h2>
+    <table>
+      <caption>Help</caption>
+      <tr>
+        <th>Table of Contents</th>
+        <td>t</td>
+      </tr>
+      <tr>
+        <th>Exposé</th>
+        <td>ESC</td>
+      </tr>
+      <tr>
+        <th>Full screen slides</th>
+        <td>e</td>
+      </tr>
+      <tr>
+        <th>Presenter View</th>
+        <td>p</td>
+      </tr>
+      <tr>
+        <th>Source Files</th>
+        <td>s</td>
+      </tr>
+      <tr>
+        <th>Slide Numbers</th>
+        <td>n</td>
+      </tr>
+      <tr>
+        <th>Toggle screen blanking</th>
+        <td>b</td>
+      </tr>
+      <tr>
+        <th>Show/hide slide context</th>
+        <td>c</td>
+      </tr>
+      <tr>
+        <th>Notes</th>
+        <td>2</td>
+      </tr>
+      <tr>
+        <th>Help</th>
+        <td>h</td>
+      </tr>
+    </table>
+  </div>
+  <script>main()</script>
+</body>
+</html>
