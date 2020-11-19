@@ -15,6 +15,12 @@ After cloning this repository, if you have a Java environment on your machine, y
 ./gradlew run
 ```
 
+To run the application with command line arguments :
+
+```
+./gradlew run --args="premierArgument secondArgument"
+```
+
 
 # Run the tests
 

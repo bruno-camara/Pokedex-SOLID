@@ -18,10 +18,7 @@ public class HTTPRequestExample {
     public static void run() {
         String jsonResponse = "";
         try {
-//            URL url = new URL("https://pokeapi.co/api/v2/pokemon/1");
-//            HttpURLConnection con = (HttpURLConnection) url.openConnection();
-//            con.setRequestMethod("GET");
-//            con.setRequestProperty("Content-Type", "application/json")
+
             CloseableHttpClient httpClient = HttpClientBuilder.create().build();
             HttpGet request = new HttpGet("https://pokeapi.co/api/v2/pokemon/1");
             request.addHeader("content-type", "application/json");
