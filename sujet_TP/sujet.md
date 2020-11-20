@@ -128,7 +128,7 @@ Consignes supplémentaires :
 - Pour les commentaires, suivre le standard Javadoc permet de structurer ses commentaires (et éventuellement de génerer de la documentation).
 - Prenez l'habitude de coder en anglais, que ce soit pour le nommage de vos élément ou le commentaire du code.
 
-Date de rendu : 21 novembre 2020 à minuit (le samedi soir).
+Date de rendu : 28 novembre 2020 à minuit (le samedi soir).
 
 Méthode de rendu : envoyez le projet & votre rapport dans une archive par email à qrichaud.pro@gmail.com, ou mettez le sur un repo git à cloner 
 (et envoyez l'adresse du repo)
