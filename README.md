@@ -8,7 +8,7 @@ Le sujet du TP se trouve dans le fichier `./sujet_TP/sujet.html`.
 
 Vous trouverez les ressources nécessaire au TP dans le dossier `./sujet_TP/ressources/`.
 
-# 3 - TP bootsrtap
+# 3 - TP bootstrap
 
 Le squelette du code pour démarrer le TP se trouve dans le dossier `./PokedexProject`. Vous trouverez en place des examples de code
 pour vous aider à utiliser certaines librairies Java nécessaire au TP.
