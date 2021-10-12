@@ -170,16 +170,14 @@ Le fichier `FileLogUtility.java`
 ```java
 package com.example.pokedex.utilities;
 
-import com.example.pokedex.views.HtmlGeneratorInterface;
-
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class FileLogUtility {
-    public static void logHtmlToFile(String filePath, HtmlGeneratorInterface htmlGenerator) throws IOException {
-        Files.write(Paths.get(filePath), htmlGenerator.generateHtml().getBytes(StandardCharsets.UTF_8));
+    public static void logHtmlToFile(String filePath, OutputGeneratorInterface generator) throws IOException {
+        Files.write(Paths.get(filePath), generator.generateHtml().getBytes(StandardCharsets.UTF_8));
     }
 }
 ```
