@@ -30,7 +30,7 @@ Poids : 69
 ```
 
 On donne l'id du pokémon en premier argument de ligne de commande (attention, en lançant le programme avec l'outil gradle, 
-la commande aura la forme `./gradlew run --args="<id>"`. Dans IntelliJ, pour ajouter des arguments à la commande `run` de gradle,
+la commande aura la forme `./gradlew run --args="<id>"`). Dans IntelliJ, pour ajouter des arguments à la commande `run` de gradle,
 il faut d'abord lancer `run` une première fois depuis le panneau latéral "Gradle", afin de créer une config de run IntelliJ 
 (commande Maj+F10), puis éditer la commande de run "Edit Run/Debug Configurations", pour éditer la case "Run" avec 
 la commande complète : `run --args="1"`. 
@@ -58,10 +58,10 @@ On va séparer notre code en classes qui assurent chacun une responsabilité bie
   les données associées au modèle, et peut être des méthodes intrinsèquement liées à ces données. On les regroupes dans un package `models`
 - Des classes de type "service", qui servent à effectuer des actions technique bas niveau, tel que l'accès à l'API HTTP, et qui renvoient de la donnée
   brute non modélisée. On les regroupe dans un package `services`
-- Des classes de type "controller", qui font l'interface entre les services et les modèles, elles utilisent les classes service pour récupérer des données
+- Des classes de type "controller", qui font le lien entre les services et les modèles, elles utilisent les classes service pour récupérer des données
   brutes sans avoir à se soucier du fonctionnement bas niveau de l'accès à ces données, et instancient les classes modèles à partir des données récupérées. 
   On les regroupe dans un package `controllers`.
-- Des classes de type "view", qui servent à génerer des représentation à destination de l'utilisateur final, à partir des instances des classe model.
+- Des classes de type "view", qui servent à génerer des représentations à destination de l'utilisateur final, à partir des instances des classe model.
   On les regroupe dans un package `views`.
 
 ##### B) Dependency Inversion (et Open-Closed)
@@ -123,7 +123,8 @@ de la classe parent, tout en ajoutant les nouvelles fonctionnalités nécessaire
 
 Vous avez dorénavant deux classe modèles, dont l'une hérite de l'autre. Pour respecter le principe de Liskov Substitution,
 le code qui dépend de classe parent doit pouvoir continuer à fonctionner avec des instances de la classe fille sans nécessiter
-de refactoring. Notamment, vos classes "view" existante devraient continuer à fonctionner tel quel.
+de refactoring. Notamment, vos classes "view" existantes, qui a priori ont une dépendance vers les classes "model" 
+devraient continuer à fonctionner tel quel.
 
 ##### C) Dependency Inversion
 
@@ -132,20 +133,146 @@ devrait se faire sans problème. Créez deux implémentations de votre interface
 selon les conditions d'appel du programmes, injectez une instance de l'une ou de l'autre à votre controller. 
 
 
-### 3) Écriture d'un test unitaire
+### 3) Une nouvelle sortie du programme
+
+On veut désormais que notre programme donne une description texte du pokémon en console (comportement actuel), mais
+aussi qu'il génère un document HTML avec la description du pokémon. Le HTML est généré dans un fichier `output.html`
+dans le dossier d'exécution.
+
+Le format de la sortie :
+
+```
+<h1>Bulbizarre</h1>
+<ul>
+<li>Id : 1</li>
+<li>Taille : 7</li>
+<li>Poids : 69</li>
+<li>Description : Il a une étrange graine plantée sur son dos. Elle grandit avec lui depuis la naissance.</li>
+</ul>
+```
+
+Pour ce faire, réutilisez le code proposé ci dessous : 
+
+Dans un package `utilities`, fichier `ConsoleLogUtility.java` :
+
+```java
+package com.example.pokedex.utilities;
+
+public class ConsoleLogUtility {
+    public static void logTextToConsole(OutputGeneratorInterface generator) {
+        System.out.println(generator.generateText());
+    }
+}
+```
+
+Le fichier `FileLogUtility.java`
+
+```java
+package com.example.pokedex.utilities;
+
+import com.example.pokedex.views.HtmlGeneratorInterface;
+
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class FileLogUtility {
+    public static void logHtmlToFile(String filePath, HtmlGeneratorInterface htmlGenerator) throws IOException {
+        Files.write(Paths.get(filePath), htmlGenerator.generateHtml().getBytes(StandardCharsets.UTF_8));
+    }
+}
+```
+
+Et le fichier `OutputGeneratorInterface.java` 
+
+```java
+package com.example.pokedex.utilities;
+
+public interface OutputGeneratorInterface {
+    public String generateText();
+    public String generateHtml();
+}
+```
+
+Le code source proposé ne respecte pas le principe "Interface Segregation". Refactorez le pour que le principe soi respecté,
+puis intégrez le à votre code existant. A priori, ce sera votre classe "view" qui prendra le role du `generator`, et qui devra
+implémenter les interfaces que vous aurez définies.
+
+### 4) Écriture d'un test unitaire
 
 
+Nous allons faire un test unitaire sur notre classe "controller". Comme nous avons respecté le principe "Dependency Inversion",
+nous allons pouvoir substituer facilement la dépendance de la classe controller à la classe service.
 
-Choisissez une classe dans votre application, et écrivez un test unitaire pour tester son bon fonctionnement.
-Le principe d'un test unitaire, c'est qu'il doit tester uniquement le code de la classe testée, pas de ses dépendences, qui doivent
-être au maximum rendues abstraites.
+Voici ci dessous un exemple d'implémentation du test unitaire, à adapter à votre code. 
 
-Voir la section "Aide" de ce sujet pour plus d'infos sur les test unitaires.
+Fichier `PokemonsControllerTest.java`, à situer sous le dossier `test` de votre projet gradle (voir l'annexe du sujet sur JUnit)
 
+```java
+package com.example.pokedex.controllers;
 
-- Choisissez une classe pertinente à tester, qui permette de mettre en évidence le principe Dependency Inversion. Indice : 
-  si vous avez suivi un modèle MVC, la classe qui gère votre vue (le V de MVC) s'y prête bien
+import com.example.pokedex.models.AdvancedPokemon;
+import com.example.pokedex.models.Pokemon;
+import com.example.pokedex.services.PokemonData;
+import com.example.pokedex.services.PokemonFetcherInterface;
+import org.junit.Assert;
+import org.junit.Test;
 
+import static org.junit.Assert.*;
+
+public class PokemonsControllerTest {
+
+    /**
+     * Ce test vérifie que la méthode `getPokemon` de la classe {@link PokemonsController}
+     * renvoie bien une instance de la classe {@link AdvancedPokemon}, dans le cas où le service
+     * qui implémente l'interface {@link PokemonFetcherInterface} renvoit bien des données qui comprennent
+     * une description de pokémon.
+     * (dans le cas contraire, c'est une instance de la classe {@link Pokemon} qui serait renvoyée).
+     *
+     * Pour celà nous implémentons un service mock, qui implémente l'interface {@link PokemonFetcherInterface}
+     * et qui renvoit un jeu de données de test, comprenant une description de pokémon.
+     *
+     * Le test vérifie ensuite que l'instance AdvancedPokemon a bien tous les attributs
+     * aux valeurs attendues, compte tenu des données de tests renvoyées par notre mock.
+     */
+    @Test
+    public void getPokemon() {
+        PokemonsController pokemonsController = new PokemonsController(new PokemonFetcherMock());
+        Pokemon pokemon = null;
+
+        try {
+            pokemon = pokemonsController.getPokemon(2);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        /**
+         * The fetcher returned a description, test that the controller returns an instance
+         * of AdvancedPokemon
+         */
+        Assert.assertTrue(pokemon instanceof AdvancedPokemon);
+        AdvancedPokemon advancedPokemon = (AdvancedPokemon) pokemon;
+
+        /**
+         * Test that the controller created the pokemon instance with all
+         * the correct data
+         */
+        Assert.assertEquals(2, pokemon.getId());
+        Assert.assertEquals("Poketest", pokemon.getName());
+        Assert.assertEquals(22, pokemon.getHeight());
+        Assert.assertEquals(33, pokemon.getWeight());
+        Assert.assertEquals("Poke test description", advancedPokemon.getDescription());
+
+    }
+
+    class PokemonFetcherMock implements PokemonFetcherInterface {
+        // TODO
+    }
+}
+```
+
+Adaptez le code ci dessus à votre code existant.
 
 ## Consignes pour le rendu
 
@@ -154,9 +281,6 @@ Livrables à rendre :
 - Le dossier avec l'application (l'équivalent du `PokedexProject` de départ). L'application doit être fonctionnelle, et pouvoir
   être lancée facilement en ligne de commande (laissez des instrutions claires dans un README, si vous n'avez pas repris la configuration
   Gradle fournie)
-- Un document rédigé (format de votre choix, PDF, ODF, HTML, markdown pour les plus geeks d'entre vous, …), où vous expliquez pour chaque principe
-  SOLID comment vous l'avez mis en œuvre dans votre application, en citant explicitement les classes et parties du code qui correspondent.
-  (Exception pour le Interface Segregation Principle, où vous expliquez un scénario hypothétique de mise en œuvre).
 
 Consignes supplémentaires : 
 
@@ -165,7 +289,7 @@ Consignes supplémentaires :
 - Pour les commentaires, suivre le standard Javadoc permet de structurer ses commentaires (et éventuellement de génerer de la documentation).
 - Prenez l'habitude de coder en anglais, que ce soit pour le nommage de vos élément ou le commentaire du code.
 
-Date de rendu : 28 novembre 2020 à minuit (le samedi soir).
+Date de rendu : À définir avec Victor Charpenay 
 
 Méthode de rendu : envoyez le projet & votre rapport dans une archive par email à qrichaud.pro@gmail.com, ou mettez le sur un repo git à cloner 
 (et envoyez l'adresse du repo)

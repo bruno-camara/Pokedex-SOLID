@@ -33,6 +33,43 @@
   <meta name="generator" content="pandoc" />
   <title></title>
   <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
   <link rel="stylesheet" href="ressources/pandoc_template/template.css" type="text/css" />
 </head>
 <body>
@@ -71,7 +108,7 @@ Nom : Bulbizarre
 Taille : 7
 Poids : 69
 =============================</code></pre>
-<p>On donne l'id du pokémon en premier argument de ligne de commande (attention, en lançant le programme avec l'outil gradle, la commande aura la forme <code>./gradlew run --args=&quot;&lt;id&gt;&quot;</code>. Dans IntelliJ, pour ajouter des arguments à la commande <code>run</code> de gradle, il faut d'abord lancer <code>run</code> une première fois depuis le panneau latéral &quot;Gradle&quot;, afin de créer une config de run IntelliJ (commande Maj+F10), puis éditer la commande de run &quot;Edit Run/Debug Configurations&quot;, pour éditer la case &quot;Run&quot; avec la commande complète : <code>run --args=&quot;1&quot;</code>.</p>
+<p>On donne l'id du pokémon en premier argument de ligne de commande (attention, en lançant le programme avec l'outil gradle, la commande aura la forme <code>./gradlew run --args=&quot;&lt;id&gt;&quot;</code>). Dans IntelliJ, pour ajouter des arguments à la commande <code>run</code> de gradle, il faut d'abord lancer <code>run</code> une première fois depuis le panneau latéral &quot;Gradle&quot;, afin de créer une config de run IntelliJ (commande Maj+F10), puis éditer la commande de run &quot;Edit Run/Debug Configurations&quot;, pour éditer la case &quot;Run&quot; avec la commande complète : <code>run --args=&quot;1&quot;</code>.</p>
 <p>Voir <a href="https://stackoverflow.com/questions/58446696/passing-arguments-to-gradle-run-in-intellij-idea">StackOverflow</a>.</p>
 <p>Le programme va utiliser l'API publique de Pokeapi pour obtenir les données du pokémon demandé (voir la section Aides de ce sujet, ainsi que le code example dans le projet PokedexProject pour voir comment utiliser l'API).</p>
 <p>L'API nous renvoit beaucoup d'infos pour un pokémon, mais nous avons seulement besoin du nom (qui sera en anglais, ce n'est pas important), de la taille et du poids.</p>
@@ -85,10 +122,12 @@ Poids : 69
 <ul>
 <li>Des classes de type &quot;model&quot;, qui servent à instancier des objets qui représentent les entités de notre modèle métier (ici les Pokémon), elles stockent les données associées au modèle, et peut être des méthodes intrinsèquement liées à ces données. On les regroupes dans un package <code>models</code></li>
 <li>Des classes de type &quot;service&quot;, qui servent à effectuer des actions technique bas niveau, tel que l'accès à l'API HTTP, et qui renvoient de la donnée brute non modélisée. On les regroupe dans un package <code>services</code></li>
-<li>Des classes de type &quot;controller&quot;, qui font l'interface entre les services et les modèles, elles utilisent les classes service pour récupérer des données brutes sans avoir à se soucier du fonctionnement bas niveau de l'accès à ces données, et instancient les classes modèles à partir des données récupérées. On les regroupe dans un package <code>controllers</code>.</li>
-<li>Des classes de type &quot;view&quot;, qui servent à génerer des représentation à destination de l'utilisateur final, à partir des instances des classe model. On les regroupe dans un package <code>views</code>.</li>
+<li>Des classes de type &quot;controller&quot;, qui font le lien entre les services et les modèles, elles utilisent les classes service pour récupérer des données brutes sans avoir à se soucier du fonctionnement bas niveau de l'accès à ces données, et instancient les classes modèles à partir des données récupérées. On les regroupe dans un package <code>controllers</code>.</li>
+<li>Des classes de type &quot;view&quot;, qui servent à génerer des représentations à destination de l'utilisateur final, à partir des instances des classe model. On les regroupe dans un package <code>views</code>.</li>
 </ul>
-<h5 id="b">B)</h5>
+<h5 id="b-dependency-inversion-et-open-closed">B) Dependency Inversion (et Open-Closed)</h5>
+<p>Nos classes controllers vont dépendre des services qui font l'accès bas niveau à la source de données. Pour respecter Dependency Inversion, on veut que le controller dépende d'une <strong>abstraction</strong> de ce service, c'est à dire qu'on puisse facilement lui remplacer une implémentation bas niveau concrète par une autre. Celà passe par la création d'une Interface, de laquelle devra dépendre notre controller, et la réalisation d'une classe concrète de service (accès à l'API HTTP) qui implémente l'interface créée.</p>
+<p>Celà permet aussi de respecter le principe Open-Closed, car une modification ultérieure du code (avec une source de données différente) permettre de ne pas réfactorer le code du controller, ni du service déjà existant.</p>
 <h3 id="ajout-de-fonctionnalité">2) Ajout de fonctionnalité !</h3>
 <p>On veut maintenant pouvoir obtenir les données des pokémons depuis une autre source de données. On a une petite base de données locale (fichier <code>pokemondatabase.sqlite</code>, fournit dans le dossier <code>ressources</code>). Il présente l'avantage d'être disponible en local (pas de risque d'indisponibilité du réseau ou du serveur distant), et d'avoir une information supplémentaire dans son jeu de donnée, la description du pokémon.</p>
 <p>On laisse toutefois la possibilité à l'utilisateur de continuer à utiliser les données de l'API Pokeapi si le fichier de base de donnée n'est pas disponible.</p>
@@ -114,25 +153,124 @@ Nom : Bulbizarre
 Taille : 7
 Poids : 69
 =============================</code></pre>
-<ul>
-<li>Commencez par analyser si le code que vous aviez ecrit en partie 1 vous permet de rajouter cette nouvelle fonctionnalité en respectant le principe Open-Closed. Si ce n'est pas le cas, commencez par refactorer votre code existant. Idéalement il faudrait arriver à concevoir du code dès le départ pour éviter le plus possible d'avoir à refactorer du code existant.</li>
-<li>Structurez l'ensemble du code (avec la nouvelle fonctionnalité), en respectant les principes SOLID, en particulier Open-Closed (comme dit au point précédent), et Liskov Substitution (pas obligatoire, mais pour illustrer le principe on peut forcer un peu le trait dans l'implémentation pour en avoir un exemple).</li>
-<li>Les schémas UML sur papier restent vos amis.</li>
-</ul>
-<h3 id="écriture-dun-test-unitaire">3) Écriture d'un test unitaire</h3>
-<p>Choisissez une classe dans votre application, et écrivez un test unitaire pour tester son bon fonctionnement. Le principe d'un test unitaire, c'est qu'il doit tester uniquement le code de la classe testée, pas de ses dépendences, qui doivent être au maximum rendues abstraites.</p>
-<p>Voir la section &quot;Aide&quot; de ce sujet pour plus d'infos sur les test unitaires.</p>
-<ul>
-<li>Choisissez une classe pertinente à tester, qui permette de mettre en évidence le principe Dependency Inversion. Indice : si vous avez suivi un modèle MVC, la classe qui gère votre vue (le V de MVC) s'y prête bien</li>
-</ul>
-<h3 id="interface-segregation-principle">4) Interface Segregation Principle</h3>
-<p>Avec le sujet actuel, il est probable que le principe Interface Segregation n'a pas été mis en œuvre.</p>
-<p>Imaginez un scénario d'évolution de l'application qui pourrait justifier la mise en place d'interfaces ségreguées (sur votre rapport écrit seulement, pas besoin de l'implémenter).</p>
+<h4 id="pistes-pour-structurer-votre-code-en-suivant-les-principes-solid-1">Pistes pour structurer votre code en suivant les principes SOLID</h4>
+<h5 id="a-open-closed">A) Open Closed</h5>
+<p>La nouvelle fonctionnalité implique de faire évoluer notre modèle. Pour respecter le principe Open-Closed, ne modifiez pas la classe modèle existante, mais étendez la en créant une nouvelle classe fille, qui reprend les fonctionnalité de la classe parent, tout en ajoutant les nouvelles fonctionnalités nécessaire.</p>
+<h5 id="b-liskov-substitution">B) Liskov Substitution</h5>
+<p>Vous avez dorénavant deux classe modèles, dont l'une hérite de l'autre. Pour respecter le principe de Liskov Substitution, le code qui dépend de classe parent doit pouvoir continuer à fonctionner avec des instances de la classe fille sans nécessiter de refactoring. Notamment, vos classes &quot;view&quot; existantes, qui a priori ont une dépendance vers les classes &quot;model&quot; devraient continuer à fonctionner tel quel.</p>
+<h5 id="c-dependency-inversion">C) Dependency Inversion</h5>
+<p>Si vous avez correctement architecturé le couplage entre vos classes controller et service, l'ajout d'une nouvelle source de données devrait se faire sans problème. Créez deux implémentations de votre interface définie plus tot dans le package <code>services</code>, et selon les conditions d'appel du programmes, injectez une instance de l'une ou de l'autre à votre controller.</p>
+<h3 id="une-nouvelle-sortie-du-programme">3) Une nouvelle sortie du programme</h3>
+<p>On veut désormais que notre programme donne une description texte du pokémon en console (comportement actuel), mais aussi qu'il génère un document HTML avec la description du pokémon. Le HTML est généré dans un fichier <code>output.html</code> dans le dossier d'exécution.</p>
+<p>Le format de la sortie :</p>
+<pre><code>&lt;h1&gt;Bulbizarre&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Id : 1&lt;/li&gt;
+&lt;li&gt;Taille : 7&lt;/li&gt;
+&lt;li&gt;Poids : 69&lt;/li&gt;
+&lt;li&gt;Description : Il a une étrange graine plantée sur son dos. Elle grandit avec lui depuis la naissance.&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<p>Pour ce faire, réutilisez le code proposé ci dessous :</p>
+<p>Dans un package <code>utilities</code>, fichier <code>ConsoleLogUtility.java</code> :</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">package</span><span class="im"> com.example.pokedex.utilities;</span>
+
+<span class="kw">public</span> <span class="kw">class</span> ConsoleLogUtility {
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">logTextToConsole</span>(OutputGeneratorInterface generator) {
+        <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(generator.<span class="fu">generateText</span>());
+    }
+}</code></pre></div>
+<p>Le fichier <code>FileLogUtility.java</code></p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">package</span><span class="im"> com.example.pokedex.utilities;</span>
+
+<span class="kw">import</span><span class="im"> com.example.pokedex.views.HtmlGeneratorInterface;</span>
+
+<span class="kw">import</span><span class="im"> java.io.IOException;</span>
+<span class="kw">import</span><span class="im"> java.nio.charset.StandardCharsets;</span>
+<span class="kw">import</span><span class="im"> java.nio.file.Files;</span>
+<span class="kw">import</span><span class="im"> java.nio.file.Paths;</span>
+
+<span class="kw">public</span> <span class="kw">class</span> FileLogUtility {
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">logHtmlToFile</span>(<span class="bu">String</span> filePath, HtmlGeneratorInterface htmlGenerator) <span class="kw">throws</span> <span class="bu">IOException</span> {
+        Files.<span class="fu">write</span>(Paths.<span class="fu">get</span>(filePath), htmlGenerator.<span class="fu">generateHtml</span>().<span class="fu">getBytes</span>(StandardCharsets.<span class="fu">UTF_8</span>));
+    }
+}</code></pre></div>
+<p>Et le fichier <code>OutputGeneratorInterface.java</code></p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">package</span><span class="im"> com.example.pokedex.utilities;</span>
+
+<span class="kw">public</span> <span class="kw">interface</span> OutputGeneratorInterface {
+    <span class="kw">public</span> <span class="bu">String</span> <span class="fu">generateText</span>();
+    <span class="kw">public</span> <span class="bu">String</span> <span class="fu">generateHtml</span>();
+}</code></pre></div>
+<p>Le code source proposé ne respecte pas le principe &quot;Interface Segregation&quot;. Refactorez le pour que le principe soi respecté, puis intégrez le à votre code existant. A priori, ce sera votre classe &quot;view&quot; qui prendra le role du <code>generator</code>, et qui devra implémenter les interfaces que vous aurez définies.</p>
+<h3 id="écriture-dun-test-unitaire">4) Écriture d'un test unitaire</h3>
+<p>Nous allons faire un test unitaire sur notre classe &quot;controller&quot;. Comme nous avons respecté le principe &quot;Dependency Inversion&quot;, nous allons pouvoir substituer facilement la dépendance de la classe controller à la classe service.</p>
+<p>Voici ci dessous un exemple d'implémentation du test unitaire, à adapter à votre code.</p>
+<p>Fichier <code>PokemonsControllerTest.java</code>, à situer sous le dossier <code>test</code> de votre projet gradle (voir l'annexe du sujet sur JUnit)</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">package</span><span class="im"> com.example.pokedex.controllers;</span>
+
+<span class="kw">import</span><span class="im"> com.example.pokedex.models.AdvancedPokemon;</span>
+<span class="kw">import</span><span class="im"> com.example.pokedex.models.Pokemon;</span>
+<span class="kw">import</span><span class="im"> com.example.pokedex.services.PokemonData;</span>
+<span class="kw">import</span><span class="im"> com.example.pokedex.services.PokemonFetcherInterface;</span>
+<span class="kw">import</span><span class="im"> org.junit.Assert;</span>
+<span class="kw">import</span><span class="im"> org.junit.Test;</span>
+
+<span class="kw">import static</span><span class="im"> org.junit.Assert.*;</span>
+
+<span class="kw">public</span> <span class="kw">class</span> PokemonsControllerTest {
+
+    <span class="co">/**</span>
+     <span class="co">*</span> Ce test vérifie que la méthode <span class="co">`</span>getPokemon<span class="co">`</span> de la classe <span class="kw">{@link </span>PokemonsController<span class="kw">}</span>
+     <span class="co">*</span> renvoie bien une instance de la classe <span class="kw">{@link </span>AdvancedPokemon<span class="kw">}</span><span class="co">,</span> dans le cas où le service
+     <span class="co">*</span> qui implémente l<span class="co">&#39;</span>interface <span class="kw">{@link </span>PokemonFetcherInterface<span class="kw">}</span> renvoit bien des données qui comprennent
+     <span class="co">*</span> une description de pokémon<span class="co">.</span>
+     <span class="co">*</span> <span class="co">(</span>dans le cas contraire<span class="co">,</span> c<span class="co">&#39;</span>est une instance de la classe <span class="kw">{@link </span>Pokemon<span class="kw">}</span> qui serait renvoyée<span class="co">).</span>
+     <span class="co">*</span>
+     <span class="co">*</span> Pour celà nous implémentons un service mock<span class="co">,</span> qui implémente l<span class="co">&#39;</span>interface <span class="kw">{@link </span>PokemonFetcherInterface<span class="kw">}</span>
+     <span class="co">*</span> et qui renvoit un jeu de données de test<span class="co">,</span> comprenant une description de pokémon<span class="co">.</span>
+     <span class="co">*</span>
+     <span class="co">*</span> Le test vérifie ensuite que l<span class="co">&#39;</span>instance AdvancedPokemon a bien tous les attributs
+     <span class="co">*</span> aux valeurs attendues<span class="co">,</span> compte tenu des données de tests renvoyées par notre mock<span class="co">.</span>
+     <span class="co">*/</span>
+    <span class="at">@Test</span>
+    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">getPokemon</span>() {
+        PokemonsController pokemonsController = <span class="kw">new</span> <span class="fu">PokemonsController</span>(<span class="kw">new</span> <span class="fu">PokemonFetcherMock</span>());
+        Pokemon pokemon = <span class="kw">null</span>;
+
+        <span class="kw">try</span> {
+            pokemon = pokemonsController.<span class="fu">getPokemon</span>(<span class="dv">2</span>);
+        } <span class="kw">catch</span> (<span class="bu">Exception</span> e) {
+            e.<span class="fu">printStackTrace</span>();
+        }
+
+        <span class="co">/**</span>
+         <span class="co">*</span> The fetcher returned a description<span class="co">,</span> test that the controller returns an instance
+         <span class="co">*</span> of AdvancedPokemon
+         <span class="co">*/</span>
+        Assert.<span class="fu">assertTrue</span>(pokemon <span class="kw">instanceof</span> AdvancedPokemon);
+        AdvancedPokemon advancedPokemon = (AdvancedPokemon) pokemon;
+
+        <span class="co">/**</span>
+         <span class="co">*</span> Test that the controller created the pokemon instance with all
+         <span class="co">*</span> the correct data
+         <span class="co">*/</span>
+        Assert.<span class="fu">assertEquals</span>(<span class="dv">2</span>, pokemon.<span class="fu">getId</span>());
+        Assert.<span class="fu">assertEquals</span>(<span class="st">&quot;Poketest&quot;</span>, pokemon.<span class="fu">getName</span>());
+        Assert.<span class="fu">assertEquals</span>(<span class="dv">22</span>, pokemon.<span class="fu">getHeight</span>());
+        Assert.<span class="fu">assertEquals</span>(<span class="dv">33</span>, pokemon.<span class="fu">getWeight</span>());
+        Assert.<span class="fu">assertEquals</span>(<span class="st">&quot;Poke test description&quot;</span>, advancedPokemon.<span class="fu">getDescription</span>());
+
+    }
+
+    <span class="kw">class</span> PokemonFetcherMock <span class="kw">implements</span> PokemonFetcherInterface {
+        <span class="co">// TODO</span>
+    }
+}</code></pre></div>
+<p>Adaptez le code ci dessus à votre code existant.</p>
 <h2 id="consignes-pour-le-rendu">Consignes pour le rendu</h2>
 <p>Livrables à rendre :</p>
 <ul>
 <li>Le dossier avec l'application (l'équivalent du <code>PokedexProject</code> de départ). L'application doit être fonctionnelle, et pouvoir être lancée facilement en ligne de commande (laissez des instrutions claires dans un README, si vous n'avez pas repris la configuration Gradle fournie)</li>
-<li>Un document rédigé (format de votre choix, PDF, ODF, HTML, markdown pour les plus geeks d'entre vous, …), où vous expliquez pour chaque principe SOLID comment vous l'avez mis en œuvre dans votre application, en citant explicitement les classes et parties du code qui correspondent. (Exception pour le Interface Segregation Principle, où vous expliquez un scénario hypothétique de mise en œuvre).</li>
 </ul>
 <p>Consignes supplémentaires :</p>
 <ul>
@@ -140,7 +278,7 @@ Poids : 69
 <li>Pour les commentaires, suivre le standard Javadoc permet de structurer ses commentaires (et éventuellement de génerer de la documentation).</li>
 <li>Prenez l'habitude de coder en anglais, que ce soit pour le nommage de vos élément ou le commentaire du code.</li>
 </ul>
-<p>Date de rendu : 28 novembre 2020 à minuit (le samedi soir).</p>
+<p>Date de rendu : À définir avec Victor Charpenay</p>
 <p>Méthode de rendu : envoyez le projet &amp; votre rapport dans une archive par email à qrichaud.pro@gmail.com, ou mettez le sur un repo git à cloner (et envoyez l'adresse du repo)</p>
 <h2 id="aides">Aides</h2>
 <h3 id="utilisation-de-la-base-de-données-sqlite">Utilisation de la base de données SQLite</h3>
