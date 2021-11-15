@@ -182,16 +182,14 @@ Poids : 69
 <p>Le fichier <code>FileLogUtility.java</code></p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">package</span><span class="im"> com.example.pokedex.utilities;</span>
 
-<span class="kw">import</span><span class="im"> com.example.pokedex.views.HtmlGeneratorInterface;</span>
-
 <span class="kw">import</span><span class="im"> java.io.IOException;</span>
 <span class="kw">import</span><span class="im"> java.nio.charset.StandardCharsets;</span>
 <span class="kw">import</span><span class="im"> java.nio.file.Files;</span>
 <span class="kw">import</span><span class="im"> java.nio.file.Paths;</span>
 
 <span class="kw">public</span> <span class="kw">class</span> FileLogUtility {
-    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">logHtmlToFile</span>(<span class="bu">String</span> filePath, HtmlGeneratorInterface htmlGenerator) <span class="kw">throws</span> <span class="bu">IOException</span> {
-        Files.<span class="fu">write</span>(Paths.<span class="fu">get</span>(filePath), htmlGenerator.<span class="fu">generateHtml</span>().<span class="fu">getBytes</span>(StandardCharsets.<span class="fu">UTF_8</span>));
+    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">logHtmlToFile</span>(<span class="bu">String</span> filePath, OutputGeneratorInterface generator) <span class="kw">throws</span> <span class="bu">IOException</span> {
+        Files.<span class="fu">write</span>(Paths.<span class="fu">get</span>(filePath), generator.<span class="fu">generateHtml</span>().<span class="fu">getBytes</span>(StandardCharsets.<span class="fu">UTF_8</span>));
     }
 }</code></pre></div>
 <p>Et le fichier <code>OutputGeneratorInterface.java</code></p>
@@ -279,7 +277,7 @@ Poids : 69
 <li>Prenez l'habitude de coder en anglais, que ce soit pour le nommage de vos élément ou le commentaire du code.</li>
 </ul>
 <p>Date de rendu : À définir avec Victor Charpenay</p>
-<p>Méthode de rendu : envoyez le projet &amp; votre rapport dans une archive par email à qrichaud.pro@gmail.com, ou mettez le sur un repo git à cloner (et envoyez l'adresse du repo)</p>
+<p>Méthode de rendu : envoyez le projet dans une archive par email à qrichaud.pro@gmail.com, ou mettez le sur un repo git à cloner (et envoyez l'adresse du repo)</p>
 <h2 id="aides">Aides</h2>
 <h3 id="utilisation-de-la-base-de-données-sqlite">Utilisation de la base de données SQLite</h3>
 <p>Base de données minimaliste stockée dans un seul fichier <code>pokemondatabase.sqlite</code>.</p>

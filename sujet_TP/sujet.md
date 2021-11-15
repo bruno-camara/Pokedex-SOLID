@@ -289,7 +289,7 @@ Consignes supplémentaires :
 
 Date de rendu : À définir avec Victor Charpenay 
 
-Méthode de rendu : envoyez le projet & votre rapport dans une archive par email à qrichaud.pro@gmail.com, ou mettez le sur un repo git à cloner 
+Méthode de rendu : envoyez le projet dans une archive par email à qrichaud.pro@gmail.com, ou mettez le sur un repo git à cloner 
 (et envoyez l'adresse du repo)
 
 ## Aides
