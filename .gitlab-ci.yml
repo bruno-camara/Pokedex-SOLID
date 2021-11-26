@@ -1,0 +1,16 @@
+default:
+  image: python:3
+
+  before_script:
+    - pip install landslide
+
+pages:
+  stage: deploy
+  script:
+    - ./pages/generate.sh
+    - mv /pages/build public
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
