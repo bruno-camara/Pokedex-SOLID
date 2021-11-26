@@ -9,7 +9,7 @@ pages:
   stage: deploy
   script:
     - ./pages/generate.sh
-    - mv /pages/build public
+    - mv ./pages/build public
   artifacts:
     paths:
       - public
