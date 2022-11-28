@@ -2,6 +2,12 @@
 
 Le contenu du cours magistral se trouve dans le fichier `./presentation/presentation.html`, slides animées en JS.
 
+Pour y accéder via un petit serveur HTTP : 
+
+- Lancer `./run.sh` à la racine du dépot
+- Éditer le contenu des slides dans le fichier `slides.md`
+- Accéder à la présentation via l'URL : `http://localhost:8000/presentation/presentation.html`
+
 # 2 - Sujet du TP
 
 Le sujet du TP se trouve dans le fichier `./sujet_TP/sujet.html`.
