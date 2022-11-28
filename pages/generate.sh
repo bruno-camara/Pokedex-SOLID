@@ -9,7 +9,7 @@ cp -R sujet_TP/sujet.html sujet_TP/ressources pages/build/TP
 
 
 # Make presentation HTML page
-cp -R presentation pages/build/presentation
+cp -R presentation pages/build/
 
 
 # Copy all static HTML files and assets
