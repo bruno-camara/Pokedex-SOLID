@@ -9,8 +9,6 @@ cp -R sujet_TP/sujet.html sujet_TP/ressources pages/build/TP
 
 
 # Make presentation HTML page
-pwd
-cd presentation && make && cd ..
 cp -R presentation pages/build/presentation
 
 
