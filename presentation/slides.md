@@ -3,7 +3,7 @@
 - Principes de design de développement logiciel 
 - Pour le paradigme Orienté Object
 
---- 
+---
 
 # S.O.L.I.D
 
@@ -19,14 +19,16 @@
 
 - S : Single-purpose Responsibility
 - O : Open-Closed 
-- L : Liskov Substition \*
+- L : Liskov Substition
 - I : Interface Segregation
 - D : Dependency Inversion
 
 
-\* On va chercher loin pour maintenir notre acronyme sous forme de jeu de mot, bienvenu dans le monde de l'informatique
+On se donne du mal pour maintenir notre acronyme sous forme de jeu de mot, bienvenu dans le monde de l'informatique
 
---- 
+
+---
+
 
 # Single-purpose Responsibility
 
@@ -48,24 +50,26 @@ Une classe, une fonction ou une méthode doit avoir une et une seule responsabil
 
 ## Mauvais example
 
-    !Java
-    public class Book {
-        private String name;
-        private String author;
-        private String text;
-     
-        //constructor, getters and setters
-     
-        public void exportToJSONFile(String filePath){
-            JSONObject outputObject = new JSONObject();
-            outputObject.put("name", this.getName());
-            outputObject.put("author", this.getAuthor());
-            outputObject.put("text", this.getText());
-            Files.write(Paths.get(filename), sampleObject.toJSONString().getBytes());
-        }
+```java
+public class Book {
+    private String name;
+    private String author;
+    private String text;
+ 
+    //constructor, getters and setters
+ 
+    public void exportToJSONFile(String filePath){
+        JSONObject outputObject = new JSONObject();
+        outputObject.put("name", this.getName());
+        outputObject.put("author", this.getAuthor());
+        outputObject.put("text", this.getText());
+        Files.write(Paths.get(filename), sampleObject.toJSONString().getBytes());
     }
+}
+```
 
---- 
+---
+
 # Single-purpose Responsibility
 
 ## Mauvais example
@@ -81,7 +85,7 @@ Une classe, une fonction ou une méthode doit avoir une et une seule responsabil
 
 ## Bon example
 
-    !Java
+```java
     public class Book {
         private String name;
         private String author;
@@ -105,17 +109,16 @@ Une classe, une fonction ou une méthode doit avoir une et une seule responsabil
             Files.write(Paths.get(filename), sampleObject.toJSONString().getBytes());
         }
     }
+```
 
 ---
-
-# Single-purpose Responsibility
 
 ## Un autre example, le modèle MVC
 
 Model, View, Controller
 
 
-    !Java
+```java
     public class Book {
       private String name;
       private String author;
@@ -139,8 +142,9 @@ Model, View, Controller
         // most of the time using a HTML template library
       }
     }
+```
 
---- 
+---
 
 # Open-Closed 
 
@@ -158,16 +162,16 @@ Une entité applicative (class, fonction, module ...) doit être ouverte à l'ex
 Une évolution des fonctionnalités ne doit pas nécessiter de réécrire du code existant, seulement de rajouter du code autour 
 du code existant.
 
---- 
+---
 
 # Open-Closed 
 
-Dans le cadre d'un langage fortement OO comme Java, cela prend la plupart du temps la forme de l'héritage d'une classe existante
+Dans le cadre d'un langage fortement "Orienté Objet" comme Java, cela prend la plupart du temps la forme de l'héritage d'une classe existante
 pour étendre ses fonctionnalités.
 
 Attention toutefois à comprendre qu'il s'agit d'un principe, au delà d'un pattern.
 
---- 
+---
 
 # Open-Closed 
 
@@ -175,25 +179,27 @@ Attention toutefois à comprendre qu'il s'agit d'un principe, au delà d'un patt
 
 Code initial
 
-    !Java
+```java
     public class Book {
         private String title;
         private String author;
      
         //constructor, getters and setters
     }
+```
 
 Plus tard, on se rend compte que certains livres de notre catalogue sont des livres traduits, et qu'on veut aussi connaitre le titre original.
 Mauvaise solution : réécrire la classe Book
 
-    !Java
+```java
     public class Book {
         private String originalTitle;
         private String translatedTitle;
         private String author;
     }
+```
 
---- 
+---
 
 # Open-Closed 
 
@@ -207,7 +213,7 @@ Problème :
   qui utilise Book
 - Si notre code était utilisé par un tiers, une mise à jour de sa dépendance va casser son code
 
---- 
+---
 
 # Open-Closed 
 
@@ -217,7 +223,7 @@ Parfois il est indispensable de refactorer un code mal pensé, ou dont l'adaptat
 
 L'enjeu, est d'arriver à concevoir son code dès le départ pour que ce cas de figure n'arrive pas.
 
---- 
+---
 
 # Open-Closed 
 
@@ -225,17 +231,18 @@ L'enjeu, est d'arriver à concevoir son code dès le départ pour que ce cas de 
 
 Code initial
 
-    !Java
+```java
     public class Book {
         private String title;
         private String author;
      
         //constructor, getters and setters
     }
+```
 
 Plus tard, on se rend compte que certains livres de notre catalogue sont des livres traduits, et qu'on veut aussi connaitre le titre original.
 
-    !Java
+```java
     public class TranslatedBook extends Book {
         private String originalTitle;
         private String translatedTitle;
@@ -245,6 +252,7 @@ Plus tard, on se rend compte que certains livres de notre catalogue sont des liv
           return this.translatedTitle;
         }
     }
+```
 
 ---
 
@@ -253,7 +261,7 @@ Besoin ultérieur, nous voulons afficher un log à chaque création d'utilisateu
 
 Version typique OO (code Java) : 
 
-    !Java
+```java
     /* code initial */
     class UserController {
       public void createUser(User user) {
@@ -274,12 +282,13 @@ Version typique OO (code Java) :
     /* mon code client */
     UserController controller = new UserControllerWithLogging();
     controller.createUser(myUser); /* Le logging a bien lieu */
+```
 
 ---
 
 Une version possible en javascript (programmation fonctionnelle + observer pattern)
 
-    !Javascript
+```js
     /* code initial, prévu avec un "hook" onCreate */
     usersController = {
       onCreateCallbacks = [];
@@ -304,6 +313,7 @@ Une version possible en javascript (programmation fonctionnelle + observer patte
     
     /* Mon code qui veut faire du logging*/
     usersController.createUser(myUser);
+```
 
 ---
 
@@ -314,7 +324,7 @@ perturber son fonctionnement.
 
 Dans le cadre de la POO, c'est très simple : 
 
-    !Java
+```java
     class A {
       /* lot of methods yeah */
     }
@@ -330,6 +340,7 @@ Dans le cadre de la POO, c'est très simple :
       
       /* happily manipulate myObject as an A, because that what we expected, even though it's a B */
     }
+```
 
 
 ---
@@ -340,7 +351,7 @@ Dans le cadre de la POO, c'est très simple :
 
 En reprenant notre extension de `Book` par `TranslatedBook`
 
-    !Java
+```java
     public class Book {
         private String title;
         private String author;
@@ -354,6 +365,7 @@ En reprenant notre extension de `Book` par `TranslatedBook`
           return this.title;
         }
     }
+```
 
 ---
 
@@ -364,7 +376,7 @@ En reprenant notre extension de `Book` par `TranslatedBook`
 
 Plus tard, on se rend compte que certains livres de notre catalogue sont des livres traduits, et qu'on veut aussi connaitre le titre original.
 
-    !Java
+```java
     public class TranslatedBook extends Book {
         private String originalTitle;
         private String translatedTitle;
@@ -383,18 +395,17 @@ Plus tard, on se rend compte que certains livres de notre catalogue sont des liv
           return this.translatedTitle;
         }
     }
+```
 
 
 
 ---
 
-# Liskov Substitution
-
 ## Problèmes
 
 Dans mon code client si je fais ceci : 
 
-    !Java
+```java
     class MyBookRenderer {
     
       BookController bookController;
@@ -409,6 +420,7 @@ Dans mon code client si je fais ceci :
         System.out.println(book.getTitle().toUpperCase());
       }
     }
+```
 
 Je vais recevoir une `NullPointerException`, car `book.getTitle()` renvoit `null` si c'est une instance de `TranslatedBook`.
 
@@ -422,7 +434,7 @@ est d'autant plus important.
 
 ## Bon example
 
-    !Java
+```java
     public class TranslatedBook extends Book {
         private String originalTitle;
         private String translatedTitle;
@@ -446,6 +458,7 @@ est d'autant plus important.
           return this.translatedTitle;
         }
     }
+```
 
 ---
 
@@ -476,13 +489,11 @@ dans le cas où on lui donne une interface trop générique alors qu'il a un bes
 
 
 ---
-# Interface Segregation 
-
 ## Mauvais example
 
 Pour gérer le contenu d'une médiathèque
 
-    !Java
+```java
     interface MediaInterface {
         public String getTitle();
         public String getAuthor();
@@ -507,8 +518,11 @@ Pour gérer le contenu d'une médiathèque
         return media.getTitle() + " - " + media.getAuthor() + " - " media.getAudioDurationSeconds() + " seconds"; 
       }
     }
+```
 
-On ne fournit pas d'implémentation de `MediaInterface (chaque client peut avoir ses besoins spécifiques sur la nature des médias, on lui demande donc
+---
+
+Dans le précédent example, on ne fournit pas d'implémentation de `MediaInterface` (chaque client peut avoir ses besoins spécifiques sur la nature des médias, on lui demande donc
 juste de respecter l'interface `MediaInterface` avec son implémentation, pour pouvoir utiliser le service `MediaRenderer`).
 
 ---
@@ -520,9 +534,9 @@ juste de respecter l'interface `MediaInterface` avec son implémentation, pour p
 Un client qui n'a que des livres, et ne souhaite utiliser que la méthode  `renderBook()` du service `MediaRenderer`
 va être obligé de faire l'implémentation suivante.
 
---- 
+---
 
-    !Java
+```java
     class Book implements MediaInterface {
       private String title ;
       private String author;
@@ -551,16 +565,15 @@ va être obligé de faire l'implémentation suivante.
         return null;
       }
     }
+```
 
 
 
 ---
 
-# Interface Segregation 
-
 ## Bon example
 
-    !Java
+```java
     interface MediaInterface {
         public String getTitle();
         public String getAuthor();
@@ -589,6 +602,7 @@ va être obligé de faire l'implémentation suivante.
         return media.getTitle() + " - " + media.getAuthor() + " - " media.getAudioDurationSeconds() + " seconds"; 
       }
     }
+```
 
 
 ---
@@ -606,10 +620,11 @@ S'il ne souhaite utiliser que la méthode `renderMediaTitleAndAuthor()`, il peut
 S'il souhaite utiliser à la fois les fonctionalité de `PrintedMediaInterface` et `AudioMediaInterface` sur un même objet,
 il peut implémenter plusieurs interfaces avec la syntaxe suivante : 
 
-    !Java
+```java
     class MyMediaThatHasBothPagesAndAudio implements AudioMediaInterface, PrintedMediaInterface {
       /* ... */
     }
+```
 
 
 ---
@@ -627,6 +642,8 @@ Il faut dépendre des abstractions, pas des implémentations.
 - Les composants haut niveaux doivent dépendre d'interfaces abstraites, qui définissent seulement les besoins exacts du composant haut niveau
 - Ainsi on peut fournir au composant n'importe quelle dépendance bas niveau qui remplit ses besoins
 
+---
+
 ## Note
 
 En termes de design pattern, ce principe repose souvent sur le pattern "Dependency Injection"
@@ -637,7 +654,7 @@ En termes de design pattern, ce principe repose souvent sur le pattern "Dependen
 
 ## Mauvais example
 
-    !Java
+```java
     class BookService { 
       private MySQLConnection dbConnection;
       /* + constructor */
@@ -647,6 +664,7 @@ En termes de design pattern, ce principe repose souvent sur le pattern "Dependen
         /* parse ResultSet and return an array of Book */
       }
     }
+```
 
 Si on veut changer notre système de base données, passer de MySQL à PostgreSQL, il faut changer la librairie, ne plus utiliser l'objet
 `MySQLConnection` et à la place avec un objet `PostgreSQLConnection`. 
@@ -660,7 +678,7 @@ Ce changement bas niveau (changement d'un système de base de données), nous ob
 
 ## Bon example
 
-    !Java
+```java
     interface GenericDbConnection {
       public ResultSet query(String queryString); 
     }
@@ -680,6 +698,7 @@ Ce changement bas niveau (changement d'un système de base de données), nous ob
       BookService service = new BookService(new PostgreSQLConnection());
       service.getBooks();
     }
+```
 
 
 ---
@@ -692,7 +711,7 @@ Ce changement bas niveau (changement d'un système de base de données), nous ob
 
 ---
 
-    !Java
+```java
     class DbConnectionMock implements GenericDbConnection {
       private ArrayList<String> queries; 
     
@@ -721,3 +740,6 @@ Ce changement bas niveau (changement d'un système de base de données), nous ob
         System.out.println("Test fail");
       }
     }
+```
+
+
