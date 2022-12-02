@@ -197,7 +197,7 @@ Le code source proposé ne respecte pas le principe "Interface Segregation". Ref
 puis intégrez le à votre code existant. A priori, ce sera votre classe "view" qui prendra le role du `generator`, et qui devra
 implémenter les interfaces que vous aurez définies.
 
-### 4) Écriture d'un test unitaire
+### 4) Écriture d'un test unitaire  (pas à faire pour le TP 2022-2023)
 
 
 Nous allons faire un test unitaire sur notre classe "controller". Comme nous avons respecté le principe "Dependency Inversion",
@@ -287,7 +287,8 @@ Consignes supplémentaires :
 - Pour les commentaires, suivre le standard Javadoc permet de structurer ses commentaires (et éventuellement de génerer de la documentation).
 - Prenez l'habitude de coder en anglais, que ce soit pour le nommage de vos élément ou le commentaire du code.
 
-Date de rendu : À définir avec Victor Charpenay 
+Date de rendu : 1er janvier 2023 (à minuit).
+
 
 Méthode de rendu : envoyez le projet dans une archive par email à qrichaud.pro@gmail.com, ou mettez le sur un repo git à cloner 
 (et envoyez l'adresse du repo)
