@@ -81,8 +81,6 @@ public class Book {
 
 ---
 
-# Single-purpose Responsibility
-
 ## Bon example
 
 ```java
@@ -100,13 +98,17 @@ public class Book {
         public BookJSONExporter(Book book) {
           this.book = book;
         }
-     
-        public void exportToFile(String filePath){
+
+        public String generateJSONString(Book book) {
             JSONObject outputObject = new JSONObject();
             outputObject.put("name", this.book.getName());
             outputObject.put("author", this.book.getAuthor());
             outputObject.put("text", this.book.getText());
-            Files.write(Paths.get(filename), sampleObject.toJSONString().getBytes());
+            return outputObject.toJSONString();
+        }
+     
+        public void exportToFile(String filePath){
+            Files.write(Paths.get(filename), this.generateJSONString.getBytes());
         }
     }
 ```
@@ -489,40 +491,31 @@ dans le cas où on lui donne une interface trop générique alors qu'il a un bes
 
 
 ---
+
 ## Mauvais example
 
-Pour gérer le contenu d'une médiathèque
 
 ```java
     interface MediaInterface {
-        public String getTitle();
-        public String getAuthor();
-    
-        /* applies to audio media, such as CDs */
-        public Int getAudioDurationSeconds();
+        /* applies to audio and video media, such as CDs */
+        public Int getDurationSeconds();
     
         /* applies to printed media, such as Books */
         public Int getPagesCount();
     } 
     
     class MediaRenderer {
-      public String renderMediaTitleAndAuthor(MediaInterface media) {
-        return media.getTitle() + " - " + media.getAuthor();
+      public String renderNbOfPages(MediaInterface printedMedia) {
+        System.out.println(media.getPagesCount() + " pages");
       }
     
-      public String renderBook(MediaInterface book) {
-        return media.getTitle() + " - " + media.getAuthor() + " - " media.getPagesCount() + " pages"; 
-      }
-    
-      public String renderCD(MediaInterface cd) {
-        return media.getTitle() + " - " + media.getAuthor() + " - " media.getAudioDurationSeconds() + " seconds"; 
+      public String renderDuration(MediaInterface liveMedia) {
+        System.out.println(media.getDurationSeconds() + " seconds");
       }
     }
 ```
 
----
-
-Dans le précédent example, on ne fournit pas d'implémentation de `MediaInterface` (chaque client peut avoir ses besoins spécifiques sur la nature des médias, on lui demande donc
+Dans cet example, on ne fournit pas d'implémentation de `MediaInterface` (chaque client peut avoir ses besoins spécifiques sur la nature des médias, on lui demande donc
 juste de respecter l'interface `MediaInterface` avec son implémentation, pour pouvoir utiliser le service `MediaRenderer`).
 
 ---
@@ -561,7 +554,7 @@ va être obligé de faire l'implémentation suivante.
       }
     
       /* Implementation factice ici, car on n'a en fait pas besoin des fonctionnalités lié aux médias audio */
-      public int getAudioDurationSeconds() {
+      public int getDurationSeconds() {
         return null;
       }
     }
@@ -574,32 +567,23 @@ va être obligé de faire l'implémentation suivante.
 ## Bon example
 
 ```java
-    interface MediaInterface {
-        public String getTitle();
-        public String getAuthor();
-    }
-
-    interface PrintedMediaInterface extends MediaInterface {
+    interface PrintedMediaInterface {
         /* applies to printed media, such as Books */
         public Int getPagesCount();
     }
 
-    interface AudioMediaInterface extends MediaInterface {
-        /* applies to audio media, such as CDs */
-        public Int getAudioDurationSeconds();
+    interface LiveMediaInterface {
+        /* applies to video or audio media, such as CDs */
+        public Int getDurationSeconds();
     } 
     
     class MediaRenderer {
-      public String renderMediaTitleAndAuthor(MediaInterface media) {
-        return media.getTitle() + " - " + media.getAuthor();
+      public String renderNbOfPages(PrintedMediaInterface printedMedia) {
+        System.out.println(media.getPagesCount() + " pages");
       }
     
-      public String renderBook(PrintedMediaInterface book) {
-        return media.getTitle() + " - " + media.getAuthor() + " - " media.getPagesCount() + " pages"; 
-      }
-    
-      public String renderCD(AudioMediaInterface cd) {
-        return media.getTitle() + " - " + media.getAuthor() + " - " media.getAudioDurationSeconds() + " seconds"; 
+      public String renderDuration(LiveMediaInterface liveMedia) {
+        System.out.println(media.getDurationSeconds() + " seconds");
       }
     }
 ```
@@ -612,16 +596,14 @@ va être obligé de faire l'implémentation suivante.
 ## Bon example
 
 Le client peut implémenter seulement l'interface `PrintedMediaInterface` s'il n'a pas besoin des fonctionnalités
-de `AudioMediaInterface`.
+de `LiveMediaInterface`.
 
-S'il ne souhaite utiliser que la méthode `renderMediaTitleAndAuthor()`, il peut même implémenter seulement l'interface 
-`MediaInterface`.
 
-S'il souhaite utiliser à la fois les fonctionalité de `PrintedMediaInterface` et `AudioMediaInterface` sur un même objet,
+S'il souhaite utiliser à la fois les fonctionalité de `PrintedMediaInterface` et `LiveMediaInterface` sur un même objet,
 il peut implémenter plusieurs interfaces avec la syntaxe suivante : 
 
 ```java
-    class MyMediaThatHasBothPagesAndAudio implements AudioMediaInterface, PrintedMediaInterface {
+    class AudioBook implements LiveMediaInterface, PrintedMediaInterface {
       /* ... */
     }
 ```
@@ -721,6 +703,7 @@ Ce changement bas niveau (changement d'un système de base de données), nous ob
       /* The mock stores the queries done in an array */
       public ResultSet query(String queryString) {
         this.queries.add(queryString);
+        return /* default result set here */;
       }
     
       public ArrayList<String> getQueries() {
