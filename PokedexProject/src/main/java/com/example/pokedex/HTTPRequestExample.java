@@ -20,7 +20,7 @@ public class HTTPRequestExample {
         try {
 
             CloseableHttpClient httpClient = HttpClientBuilder.create().build();
-            HttpGet request = new HttpGet("https://pokeapi.co/api/v2/pokemon/1");
+            HttpGet request = new HttpGet("https://pokeapi.co/api/v2/pokemon/2");
             request.addHeader("content-type", "application/json");
             HttpResponse result = httpClient.execute(request);
             jsonResponse = EntityUtils.toString(result.getEntity(), "UTF-8");
