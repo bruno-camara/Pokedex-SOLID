@@ -1,5 +1,3 @@
-package views;
-
 import controllers.ControllerAPI;
 import models.Pokemon;
 import models.PokemonWithDescription;
@@ -7,10 +5,12 @@ import services.APIRequest;
 import services.LocalDBRequest;
 import utilities.ConsoleLogUtility;
 import utilities.FileLogUtility;
+import views.ConsoleView;
+import views.HTMLView;
 
 import java.io.IOException;
 
-public class ShowResults {
+public class Pokedex {
     public static void main(String[] args) throws IOException {
         System.out.println("Java version " + System.getProperty("java.version"));
         if (args.length > 1) {
