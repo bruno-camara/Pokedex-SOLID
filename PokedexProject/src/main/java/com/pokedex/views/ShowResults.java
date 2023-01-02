@@ -1,19 +1,17 @@
-package views;
+package com.pokedex.views;
 
-import controllers.ControllerAPI;
-import models.Pokemon;
-import models.PokemonWithDescription;
-import services.APIRequest;
-import services.LocalDBRequest;
-import services.RequestInterface;
+import com.pokedex.controllers.ControllerAPI;
+import com.pokedex.models.Pokemon;
+import com.pokedex.models.PokemonWithDescription;
+import com.pokedex.services.APIRequest;
+import com.pokedex.services.LocalDBRequest;
 
 public class ShowResults {
     public static void main(String[] args) {
         System.out.println("Java version " + System.getProperty("java.version"));
         if (args.length > 1) {
-            System.out.println("Eu entrei aqui");
             //Call the classes and functions for local DB
-            RequestInterface dbRequest = new LocalDBRequest();
+            LocalDBRequest dbRequest = new LocalDBRequest();
             PokemonWithDescription pokemon = ControllerAPI.createPokemonWithDescription(dbRequest, args[0]);
 
             //Show results
@@ -22,7 +20,7 @@ public class ShowResults {
             System.out.println("Nom : " + pokemon.getName());
             System.out.println("Taille : " + pokemon.getHeight());
             System.out.println("Poids : " + pokemon.getWeight());
-            System.out.println("Poids : " + pokemon.getDescription());
+            System.out.println("Description : " + pokemon.getDescription());
             System.out.println("=============================");
         }
         else if (args.length > 0){

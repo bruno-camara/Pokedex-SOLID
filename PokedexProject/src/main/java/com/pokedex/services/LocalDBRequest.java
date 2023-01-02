@@ -1,4 +1,4 @@
-package services;
+package com.pokedex.services;
 
 import java.sql.*;
 import java.util.*;
@@ -18,8 +18,10 @@ public class LocalDBRequest implements RequestInterface {
             conn = DriverManager.getConnection(url);
             System.out.println("Connection to SQLite has been established.");
 
-            PreparedStatement stmt  = conn.prepareStatement("SELECT name, description FROM pokemons WHERE id = ?");
-            stmt.setInt(1, Integer.parseInt(numPokemon)); // Sets the value "numPokemon" for parameter at position 1
+            int idPokemon = Integer.parseInt(numPokemon);
+
+            PreparedStatement stmt  = conn.prepareStatement("SELECT name, height, weight, description FROM pokemons WHERE id = ?");
+            stmt.setInt(1, idPokemon); // Sets the value "numPokemon" for parameter at position 1
             ResultSet rs = stmt.executeQuery();
             rs.next();
 

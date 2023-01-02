@@ -1,4 +1,4 @@
-package models;
+package com.pokedex.models;
 
 public class Pokemon {
 

@@ -1,4 +1,4 @@
-package models;
+package com.pokedex.models;
 
 public class PokemonWithDescription extends Pokemon {
     private String description;

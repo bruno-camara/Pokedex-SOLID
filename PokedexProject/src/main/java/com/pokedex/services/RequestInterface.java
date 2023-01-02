@@ -1,4 +1,4 @@
-package services;
+package com.pokedex.services;
 
 import java.util.List;
 

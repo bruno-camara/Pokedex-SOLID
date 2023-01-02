@@ -1,4 +1,4 @@
-package services;
+package com.pokedex.services;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;

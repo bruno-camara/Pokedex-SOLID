@@ -19,7 +19,7 @@ dependencies {
 
 jar {
     manifest {
-        attributes "Main-Class": "com.example.pokedex.Pokedex"
+        attributes "Main-Class": "com.pokedex.views.ShowResults"
     }
     from {
         configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
@@ -28,5 +28,5 @@ jar {
 
 
 application {
-    mainClassName = 'com.example.pokedex.Pokedex'
+    mainClassName = 'com.pokedex.views.ShowResults'
 }
