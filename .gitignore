@@ -12,3 +12,6 @@ examples/
 pages/
 presentation/
 run.sh
+.gitlab-ci.yml
+PokedexProjectSolution.zip.nc
+READMEProf.md
