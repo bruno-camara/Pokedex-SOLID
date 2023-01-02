@@ -1,32 +1,38 @@
 package controllers;
 
 import models.Pokemon;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import models.PokemonWithDescription;
+import services.RequestInterface;
+
+import java.util.List;
 
 public class ControllerAPI {
-    public static Pokemon createPokemon(String jsonResponse) {
+    public static Pokemon createPokemon(RequestInterface request, String numPokemon) {
 
-        Pokemon pokemon = null;
-        try {
-            JSONParser parser = new JSONParser();
-            Object resultObject = parser.parse(jsonResponse);
-            if (resultObject instanceof JSONObject) {
-                JSONObject obj = (JSONObject) resultObject;
-                String name = obj.get("name").toString();
-                Integer height = Integer.parseInt(obj.get("height").toString());
-                Integer weight = Integer.parseInt(obj.get("weight").toString());
-                pokemon = new Pokemon(name, height, weight);
-            } else {
-                System.err.println("Error, we expected a JSON Object from the API");
-            }
-        } catch (ParseException e) {
-            System.err.println("Could not parse the response given by the API as JSON");
-            System.err.println("Response body is :");
-            System.err.println(jsonResponse);
-            e.printStackTrace();
-        }
+        List<String> pokemonAttributes = request.run(numPokemon);
+
+        Integer id = Integer.parseInt(pokemonAttributes.get(0));
+        String name = pokemonAttributes.get(1);
+        Integer height = Integer.parseInt(pokemonAttributes.get(2));
+        Integer weight = Integer.parseInt(pokemonAttributes.get(3));
+
+        Pokemon pokemon = new Pokemon(id, name, height, weight);
+
+        return pokemon;
+    }
+
+    public static PokemonWithDescription createPokemonWithDescription(RequestInterface request, String numPokemon) {
+
+        List<String> pokemonAttributes = request.run(numPokemon);
+
+        Integer id = Integer.parseInt(pokemonAttributes.get(0));
+        String name = pokemonAttributes.get(1);
+        Integer height = Integer.parseInt(pokemonAttributes.get(2));
+        Integer weight = Integer.parseInt(pokemonAttributes.get(3));
+        String description = pokemonAttributes.get(4);
+
+        PokemonWithDescription pokemon = new PokemonWithDescription(id, name, height, weight, description);
+
         return pokemon;
     }
 }

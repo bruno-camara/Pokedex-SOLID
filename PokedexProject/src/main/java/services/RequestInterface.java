@@ -1,6 +1,8 @@
 package services;
 
+import java.util.List;
+
 public interface RequestInterface {
 
-    String run(String numPokemon);
+    List<String> run(String numPokemon);
 }

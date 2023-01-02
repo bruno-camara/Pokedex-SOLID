@@ -1,14 +1,21 @@
 package models;
 
 public class Pokemon {
+
+    private Integer id;
     private String name;
     private Integer height;
     private Integer weight;
 
-    public Pokemon(String name, Integer height, Integer weight){
+    public Pokemon(Integer id, String name, Integer height, Integer weight){
+        this.id = id;
         this.name = name;
         this.height = height;
         this.weight = weight;
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public String getName() {
@@ -21,6 +28,10 @@ public class Pokemon {
 
     public Integer getWeight() {
         return weight;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public void setName(String name) {

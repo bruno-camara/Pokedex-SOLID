@@ -1,18 +1,18 @@
 package models;
 
 public class PokemonWithDescription extends Pokemon {
-    private String descriptions;
+    private String description;
 
-    public PokemonWithDescription(String name, Integer height, Integer weight, String descriptions){
-        super(name, height, weight);
-        this.descriptions = descriptions;
+    public PokemonWithDescription(Integer id, String name, Integer height, Integer weight, String description){
+        super(id, name, height, weight);
+        this.description = description;
     }
 
-    public String getDescriptions(){
-        return this.descriptions;
+    public String getDescription(){
+        return this.description;
     }
 
-    public void setDescriptions(String descriptions){
-        this.descriptions = descriptions;
+    public void setDescription(String description){
+        this.description = description;
     }
 }
