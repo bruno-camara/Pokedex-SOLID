@@ -1,6 +1,7 @@
-The project is a Pokedex constructed using SOLID principles.
+# About the Project
+The project is a Pokedex constructed using SOLID principles. It uses the oficial Pokemon API and also a Local SQL Database (path: sujet_TP/ressources/pokemondatabase.sqlite).
 
-The main file of the project is called Pokedex and its path is src/main/java.
+The main file of the project is called Pokedex and its path is PokedexProject/src/main/java.
 
 After cloning this repository, if you have a Java environment on your machine, you can directly run the commands.
 
