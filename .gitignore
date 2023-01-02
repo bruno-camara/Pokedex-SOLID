@@ -7,3 +7,8 @@ PokedexProjectSolution.zip
 PokedexProjectSolution/
 
 pages/build
+
+examples/
+pages/
+presentation/
+run.sh
