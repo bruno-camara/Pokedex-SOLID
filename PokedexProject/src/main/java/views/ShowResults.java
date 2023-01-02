@@ -8,7 +8,6 @@ import services.LocalDBRequest;
 import utilities.ConsoleLogUtility;
 import utilities.FileLogUtility;
 
-import java.io.File;
 import java.io.IOException;
 
 public class ShowResults {
@@ -24,8 +23,7 @@ public class ShowResults {
             System.out.println(consoleView.generateTextWithDescription());
 
             HTMLView htmlView = new HTMLView(pokemon);
-            FileLogUtility fileLogUtility = new FileLogUtility();
-            fileLogUtility.logHtmlToFile("./output.html", htmlView);
+            FileLogUtility.logHtmlWithDescriptionToFile("./output.html", htmlView);
         }
         else if (args.length > 0){
             //Call the classes and functions for API
@@ -34,7 +32,10 @@ public class ShowResults {
 
             //Show results
             ConsoleView consoleView = new ConsoleView(pokemon);
-            System.out.println(consoleView.generateText());
+            ConsoleLogUtility.logTextToConsole(consoleView);
+
+            HTMLView htmlView = new HTMLView(pokemon);
+            FileLogUtility.logHtmlToFile("./output.html", htmlView);
         }
         else {System.out.println("Please insert valid arguments");}
     }

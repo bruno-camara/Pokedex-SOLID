@@ -8,6 +8,9 @@ import java.nio.file.Paths;
 public class FileLogUtility {
     public static void logHtmlToFile(String filePath, OutputHTMLGeneratorInterface generator) throws IOException {
         Files.write(Paths.get(filePath), generator.generateHtml().getBytes(StandardCharsets.UTF_8));
-        System.out.println("To printando");
+    }
+
+    public static void logHtmlWithDescriptionToFile(String filePath, OutputHTMLGeneratorInterface generator) throws IOException {
+        Files.write(Paths.get(filePath), generator.generateHtmlWithDescription().getBytes(StandardCharsets.UTF_8));
     }
 }
