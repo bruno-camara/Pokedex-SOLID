@@ -1,8 +1,8 @@
-package com.pokedex.controllers;
+package controllers;
 
-import com.pokedex.models.Pokemon;
-import com.pokedex.models.PokemonWithDescription;
-import com.pokedex.services.RequestInterface;
+import models.Pokemon;
+import services.RequestInterface;
+import models.PokemonWithDescription;
 
 import java.util.List;
 
